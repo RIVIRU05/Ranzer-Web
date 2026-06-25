@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Install RANZER on Windows — RANZER</title>
+  <meta name="description" content="Download and install RANZER on Windows 10 or 11. Step-by-step guide for x64 and ARM64." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .install-hero {
+      padding-top: calc(44px + 64px);
+      padding-bottom: 64px;
+      background-color: #0B1220;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(37,99,235,0.18) 0%, transparent 70%),
+        radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 100% 100%, 28px 28px;
+      text-align: center;
+    }
+    .breadcrumb { font-size: 13px; color: #475569; margin-bottom: 20px; }
+    .breadcrumb a { color: #60A5FA; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .install-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+    }
+    .install-hero-sub {
+      font-size: 18px;
+      color: #94A3B8;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 27px;
+    }
+
+    /* ── Arch selector ─────────────────────────────────────── */
+    .arch-section {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--surface);
+    }
+    .arch-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .arch-heading {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--text-dom);
+      margin-bottom: 8px;
+    }
+    .arch-sub {
+      font-size: 15px;
+      color: var(--text-ter);
+      margin-bottom: 40px;
+    }
+    .arch-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .arch-card {
+      border: 2px solid var(--surface);
+      padding: 32px 28px;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .arch-card:hover { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.08); }
+    .arch-card-badge {
+      display: inline-flex;
+      align-items: center;
+      height: 22px;
+      padding: 0 10px;
+      border-radius: 50px;
+      background: #EFF6FF;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+      align-self: flex-start;
+    }
+    .arch-card-badge.recommended { background: var(--primary); color: #fff; }
+    .arch-card h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-dom);
+    }
+    .arch-card p {
+      font-size: 13px;
+      color: var(--text-ter);
+      line-height: 20px;
+      flex: 1;
+    }
+    .arch-card .btn { margin-top: 16px; align-self: flex-start; }
+    .arch-card-meta { font-size: 12px; color: var(--text-ter); margin-top: 4px; }
+
+    /* ── Steps ─────────────────────────────────────────────── */
+    .steps-section { padding: 72px 0; background: #F8FAFC; border-top: 1px solid var(--surface); }
+    .steps-read-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #0B1220;
+      border: 1px solid rgba(37,99,235,0.35);
+      border-left: 4px solid var(--primary);
+      padding: 20px 24px;
+      margin-bottom: 56px;
+      max-width: 760px;
+    }
+    .steps-read-banner-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .steps-read-banner h4 {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .steps-read-banner p {
+      font-size: 13px;
+      color: #94A3B8;
+      line-height: 21px;
+    }
+    .steps-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .steps-section-title {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-dom);
+      margin-bottom: 8px;
+      letter-spacing: -0.4px;
+    }
+    .steps-section-sub {
+      font-size: 15px;
+      color: var(--text-ter);
+      margin-bottom: 48px;
+      line-height: 24px;
+    }
+    .guide-steps { display: flex; flex-direction: column; gap: 0; max-width: 760px; }
+    .guide-step {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 0 24px;
+      position: relative;
+    }
+    .step-line {
+      position: absolute;
+      left: 25px;
+      top: 52px;
+      bottom: -1px;
+      width: 2px;
+      background: var(--surface);
+    }
+    .step-num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .step-body { padding-bottom: 48px; }
+    .guide-step:last-child .step-body { padding-bottom: 0; }
+    .step-body h3 {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--text-dom);
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
+    .step-body p {
+      font-size: 15px;
+      line-height: 24px;
+      color: var(--text-sec);
+      margin-bottom: 12px;
+    }
+    .step-body p:last-child { margin-bottom: 0; }
+    .inline-code {
+      font-family: "SF Mono", "Fira Code", Menlo, monospace;
+      font-size: 13px;
+      background: #F1F5F9;
+      padding: 2px 7px;
+      border-radius: 4px;
+      color: var(--text-dom);
+    }
+    .note {
+      background: #EFF6FF;
+      border-left: 3px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+      color: var(--text-sec);
+      line-height: 21px;
+      margin-top: 14px;
+    }
+    .warn {
+      background: #FFF7ED;
+      border-left: 3px solid #F97316;
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+      color: #7C3A12;
+      line-height: 21px;
+      margin-top: 14px;
+    }
+    .step-body .code-block { margin-top: 14px; border-radius: 0; }
+
+    /* ── Troubleshoot & uninstall ───────────────────────────── */
+    .info-box {
+      padding: 28px 32px;
+      border: 1px solid var(--surface);
+      margin-top: 24px;
+    }
+    .info-box h3 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-dom);
+      margin-bottom: 14px;
+    }
+    .info-box p {
+      font-size: 14px;
+      line-height: 22px;
+      color: var(--text-sec);
+      margin-bottom: 10px;
+    }
+    .info-box p:last-child { margin-bottom: 0; }
+
+    /* ── How to use CTA ─────────────────────────────────────── */
+    .how-to-use-cta {
+      margin: 72px 0 0;
+      padding: 48px;
+      background: var(--dark-surface);
+      text-align: center;
+    }
+    .how-to-use-cta p.label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #60A5FA;
+      margin-bottom: 12px;
+    }
+    .how-to-use-cta h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .how-to-use-cta p.sub {
+      font-size: 15px;
+      color: #94A3B8;
+      margin-bottom: 28px;
+      line-height: 23px;
+    }
+
+    @media (max-width: 767px) {
+      .arch-cards { grid-template-columns: 1fr; }
+      .install-hero { padding-top: calc(44px + 36px); padding-bottom: 48px; }
+      .how-to-use-cta { padding: 36px 24px; }
+      .info-box { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ──────────────────────────────────────────────── -->
+<nav class="nav scrolled" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo_30_blue.png" alt="RANZER" class="nav-logo-img" />
+      RANZER
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#download">Download</a></li>
+      <li><a href="how-to-use.html">User Guide</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#download" class="btn btn-primary btn-sm">Download</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <line x1="3" y1="6"  x2="17" y2="6"/>
+        <line x1="3" y1="10" x2="17" y2="10"/>
+        <line x1="3" y1="14" x2="17" y2="14"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <a href="index.html#features" class="drawer-link">Features</a>
+  <a href="index.html#download" class="drawer-link">Download</a>
+  <a href="how-to-use.html"     class="drawer-link">User Guide</a>
+  <a href="open-source.html"    class="drawer-link">Open Source</a>
+  <a href="#download" class="btn btn-primary drawer-cta">Download RANZER</a>
+</div>
+
+
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<div class="install-hero">
+  <div class="container">
+    <p class="breadcrumb">
+      <a href="index.html">RANZER</a> &rsaquo;
+      <a href="index.html#download">Download</a> &rsaquo;
+      Windows
+    </p>
+    <h1 class="install-hero-title">Install RANZER on Windows</h1>
+    <p class="install-hero-sub">Download the one-click wizard installer and be protected in minutes.</p>
+  </div>
+</div>
+
+
+<!-- ── Architecture selector ─────────────────────────────── -->
+<section class="arch-section" id="download">
+  <div class="container" style="text-align:center;">
+    <p class="arch-label">Step 1 — Choose your version</p>
+    <h2 class="arch-heading">Which Windows are you running?</h2>
+    <p class="arch-sub">Not sure? Most laptops and desktops use <strong>Windows x64</strong>.</p>
+
+    <div class="arch-cards">
+
+      <!-- x64 -->
+      <div class="arch-card" style="opacity:0.6;">
+        <span class="arch-card-badge recommended">Coming Soon</span>
+        <h3>Windows x64</h3>
+        <p>For Intel and AMD processors — the vast majority of Windows laptops and desktops.</p>
+        <span class="arch-card-meta">Windows 10 / 11 &nbsp;·&nbsp; Intel Core, AMD Ryzen</span>
+        <a href="#" class="btn btn-primary" style="pointer-events:none; opacity:0.5;">
+          <svg style="width:16px;height:16px;margin-right:6px;" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 3v10M6 9l4 4 4-4"/><path d="M3 16h14"/></svg>
+          Coming Soon
+        </a>
+      </div>
+
+      <!-- ARM64 -->
+      <div class="arch-card">
+        <span class="arch-card-badge recommended">Available Now</span>
+        <h3>Windows ARM64</h3>
+        <p>For ARM-based Windows devices — Surface Pro X, Snapdragon laptops, Windows on ARM.</p>
+        <span class="arch-card-meta">Windows 10 / 11 &nbsp;·&nbsp; Snapdragon, Ampere</span>
+        <a href="https://github.com/RIVIRU05/Ranzer-VU-Windows/releases/download/v1.0/RANZER_Setup_1.0.0.exe" class="btn btn-primary">
+          <svg style="width:16px;height:16px;margin-right:6px;" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 3v10M6 9l4 4 4-4"/><path d="M3 16h14"/></svg>
+          Download ARM64 Installer
+        </a>
+      </div>
+
+    </div>
+
+    <p style="font-size:13px; color:var(--text-ter); margin-top:24px;">
+      To check: <strong>Settings → System → About</strong> — look at "System type".
+    </p>
+  </div>
+</section>
+
+
+<!-- ── Install steps ─────────────────────────────────────── -->
+<section class="steps-section">
+  <div class="container">
+    <p class="steps-section-label">Installation Guide</p>
+    <h2 class="steps-section-title">Follow these steps carefully</h2>
+    <p class="steps-section-sub">Takes about 2 minutes. Skipping steps — especially the Python check — is the most common reason RANZER fails to launch.</p>
+
+    <div class="steps-read-banner">
+      <div class="steps-read-banner-icon">&#9888;</div>
+      <div>
+        <h4>Read before you run the installer</h4>
+        <p>RANZER requires Python 3.10 or later to be installed first. The installer will check for it automatically, but if Python is missing you'll need to install it and re-run. Step 1 below tells you exactly what to do.</p>
+      </div>
+    </div>
+
+    <div class="guide-steps">
+
+      <div class="guide-step">
+        <div class="step-line"></div>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Check Python is installed</h3>
+          <p>RANZER requires Python 3.10 or later. Open Command Prompt and run:</p>
+          <div class="code-block"><pre><span class="cmd">python --version</span></pre></div>
+          <p>If you see <span class="inline-code">Python 3.10.x</span> or higher, skip to step 2.</p>
+          <div class="note">
+            If Python is not found, download it from <strong>python.org/downloads</strong>. During installation tick <strong>"Add Python to PATH"</strong> and <strong>"Install for all users"</strong>. Restart your computer before continuing.
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="step-line"></div>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Run the installer as Administrator</h3>
+          <p>Right-click the downloaded <span class="inline-code">RANZER_Setup.exe</span> and select <strong>Run as administrator</strong>. This is required to install to Program Files and update your system PATH.</p>
+          <div class="warn">
+            Windows may show a SmartScreen warning. Click <strong>More info → Run anyway</strong>. RANZER is fully open source — you can review the code on GitHub.
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="step-line"></div>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Follow the install wizard</h3>
+          <p>The wizard installs RANZER to <span class="inline-code">C:\Program Files\Ranzer\</span> and automatically:</p>
+          <p>
+            · Installs required Python libraries (watchdog, psutil, Pillow)<br>
+            · Creates a <strong>RANZER</strong> entry in your Start Menu<br>
+            · Optionally adds a Desktop shortcut<br>
+            · Adds <span class="inline-code">ranzer</span> to your system PATH
+          </p>
+          <p>The full process takes about 30–60 seconds.</p>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="step-line"></div>
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Launch RANZER</h3>
+          <p><strong>From Start Menu:</strong> Press the Windows key, type <span class="inline-code">RANZER</span>, and click the app.</p>
+          <p><strong>From Command Prompt:</strong> Open a <em>new</em> terminal window (so it picks up the updated PATH) and run:</p>
+          <div class="code-block"><pre><span class="cmd">ranzer gui</span></pre></div>
+          <div class="note">Always open a <strong>new</strong> Command Prompt after installing. Existing windows won't have the updated PATH yet.
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>Verify the install</h3>
+          <p>In a new Command Prompt, run:</p>
+          <div class="code-block"><pre><span class="cmd">ranzer --help</span></pre></div>
+          <p>You should see the full RANZER command list. If so — you're all set. Head to the User Guide to start protecting your files.</p>
+        </div>
+      </div>
+
+    </div><!-- /guide-steps -->
+
+    <!-- Uninstall -->
+    <div class="info-box" style="margin-top: 64px; background: #F8FAFC;">
+      <h3>Uninstalling RANZER</h3>
+      <p>Go to <strong>Settings → Apps → Installed Apps</strong>, find RANZER, and click <strong>Uninstall</strong>. Alternatively use <strong>Control Panel → Programs → Uninstall a Program</strong>. All files, shortcuts, and PATH entries are removed automatically.</p>
+    </div>
+
+    <!-- Troubleshoot -->
+    <div class="info-box">
+      <h3>Troubleshooting</h3>
+      <p><strong>'ranzer' is not recognized</strong> — Open a <em>new</em> Command Prompt. If still failing, restart your PC to reload environment variables.</p>
+      <p><strong>Python not found during install</strong> — Install Python 3.10+ from python.org with "Add Python to PATH" ticked, restart, then re-run the installer.</p>
+      <p><strong>GUI doesn't open</strong> — Run <span class="inline-code">python -m ranzer gui</span> in a terminal to see the error directly.</p>
+      <p><strong>SmartScreen blocks install</strong> — Click More info → Run anyway. The app is unsigned open-source software, not malware.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── How to use CTA ────────────────────────────────────── -->
+<div class="how-to-use-cta">
+  <div class="container">
+    <p class="label">Next Step</p>
+    <h2>Ready to start monitoring?</h2>
+    <p class="sub">The User Guide walks you through setting up your first monitored directory, understanding alerts, and getting the most out of RANZER.</p>
+    <a href="how-to-use.html" class="btn btn-primary" style="font-size:16px; height:50px; padding: 0 32px;">
+      Read the User Guide →
+    </a>
+  </div>
+</div>
+
+
+<!-- ── Footer ───────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <img src="assets/logo_30_blue.png" alt="RANZER" class="footer-logo-img" />
+          RANZER
+        </div>
+        <p class="footer-copy">© 2026 RANZER. Open source software.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="https://github.com/RIVIRU05/Ranzer" target="_blank" rel="noopener">GitHub</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#download">Download</a>
+        <a href="install-linux.html">Linux</a>
+        <a href="how-to-use.html">User Guide</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<div class="attribution">
+  <div class="attribution-inner">
+    <img src="assets/vu_logo.png" alt="Victoria University Australia" class="attribution-logo" />
+    <div class="attribution-divider"></div>
+    <p class="attribution-text">
+      Developed as part of an academic project at<br>
+      <strong>Victoria University, Melbourne, Australia</strong>
+    </p>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const drawer    = document.getElementById('drawer');
+  hamburger.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  drawer.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { drawer.classList.remove('open'); document.body.style.overflow = ''; }
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

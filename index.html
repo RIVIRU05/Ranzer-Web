@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RANZER — Stop Ransomware Before It Spreads</title>
+  <meta name="description" content="RANZER is an open-source ransomware detection tool for Linux and Windows. Real-time monitoring, entropy analysis, honey files, and auto-termination." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ── Navigation ───────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="assets/logo_30_blue.png" alt="RANZER" class="nav-logo-img" />
+      RANZER
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#download">Download</a></li>
+      <li><a href="how-to-use.html">User Guide</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#download" class="btn btn-primary btn-sm">Download</a>
+    </div>
+
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <line x1="3" y1="6"  x2="17" y2="6"  id="hb-top"/>
+        <line x1="3" y1="10" x2="17" y2="10" id="hb-mid"/>
+        <line x1="3" y1="14" x2="17" y2="14" id="hb-bot"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="drawer">
+  <a href="#features"        class="drawer-link">Features</a>
+  <a href="#how"             class="drawer-link">How It Works</a>
+  <a href="#download"        class="drawer-link">Download</a>
+  <a href="how-to-use.html"  class="drawer-link">User Guide</a>
+  <a href="open-source.html" class="drawer-link">Open Source</a>
+  <a href="#download" class="btn btn-primary drawer-cta">Download RANZER</a>
+</div>
+
+
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <img src="assets/logo.png" alt="RANZER" class="hero-logo fade-in" />
+    <p class="hero-eyebrow fade-in">Open Source Ransomware Detection</p>
+    <h1 class="hero-title fade-in">Stop ransomware.<br>Before it spreads.</h1>
+    <p class="hero-sub fade-in">
+      RANZER monitors your files in real time, identifies encryption patterns using
+      entropy analysis and decoy files, and terminates ransomware the moment it's detected.
+    </p>
+    <div class="hero-actions fade-in">
+      <a href="install-windows.html" class="btn btn-primary">Download for Windows</a>
+      <a href="install-linux.html" class="btn btn-secondary">Download for Linux</a>
+    </div>
+    <p class="hero-note fade-in">Free and open source &nbsp;·&nbsp; Windows &amp; Linux</p>
+  </div>
+</section>
+
+
+<!-- ── Trust bar ─────────────────────────────────────────── -->
+<div class="trust fade-in">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polyline points="5.5 8 7.2 9.7 10.5 6.3"/></svg>
+      Real-Time Detection
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polyline points="5.5 8 7.2 9.7 10.5 6.3"/></svg>
+      Auto-Terminate
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polyline points="5.5 8 7.2 9.7 10.5 6.3"/></svg>
+      Honey File Engine
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polyline points="5.5 8 7.2 9.7 10.5 6.3"/></svg>
+      Windows &amp; Linux
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><polyline points="5.5 8 7.2 9.7 10.5 6.3"/></svg>
+      100% Open Source
+    </div>
+  </div>
+</div>
+
+
+<!-- ── Features ──────────────────────────────────────────── -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Features</p>
+      <h2 class="section-heading">Every layer of protection.</h2>
+      <p class="section-sub">RANZER combines multiple detection methods so no ransomware slips through undetected.</p>
+    </div>
+
+    <div class="features-grid">
+
+      <!-- Real-Time Monitoring -->
+      <div class="feature-card fade-in">
+        <svg class="feature-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="20" cy="20" r="3"/>
+          <path d="M7 20c3-6 7-9 13-9s10 3 13 9"/>
+          <path d="M7 20c3 6 7 9 13 9s10-3 13-9"/>
+          <circle cx="20" cy="20" r="11" stroke-dasharray="3 3" opacity="0.3"/>
+        </svg>
+        <h3 class="feature-title">Real-Time Monitoring</h3>
+        <p class="feature-desc">Watches every file event in your directories as it happens — using inotify on Linux and Watchdog on Windows. Zero polling delay.</p>
+      </div>
+
+      <!-- Entropy Analysis -->
+      <div class="feature-card fade-in">
+        <svg class="feature-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4 30 10 22 16 26 22 14 28 18 36 8"/>
+          <line x1="4" y1="34" x2="36" y2="34"/>
+        </svg>
+        <h3 class="feature-title">Entropy Analysis</h3>
+        <p class="feature-desc">Measures data randomness in written files. Encrypted content has near-maximum entropy — RANZER catches it before the file is saved.</p>
+      </div>
+
+      <!-- Honey File Engine -->
+      <div class="feature-card fade-in">
+        <svg class="feature-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="20 4 28 10 28 22 20 28 12 22 12 10"/>
+          <polygon points="20 12 24 15 24 21 20 24 16 21 16 15" opacity="0.4"/>
+          <circle cx="20" cy="18" r="2" fill="currentColor" stroke="none"/>
+        </svg>
+        <h3 class="feature-title">Honey File Engine</h3>
+        <p class="feature-desc">Deploys invisible decoy files inside monitored directories. Any process that reads, modifies, or renames them triggers an immediate CRITICAL alert.</p>
+      </div>
+
+      <!-- Auto-Terminate -->
+      <div class="feature-card fade-in">
+        <svg class="feature-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="20" cy="20" r="14"/>
+          <line x1="14" y1="14" x2="26" y2="26"/>
+          <line x1="26" y1="14" x2="14" y2="26"/>
+        </svg>
+        <h3 class="feature-title">Auto-Terminate</h3>
+        <p class="feature-desc">When threat score reaches CRITICAL, RANZER kills the ransomware process automatically — no user action required, no seconds wasted.</p>
+      </div>
+
+      <!-- Process Identification -->
+      <div class="feature-card fade-in">
+        <svg class="feature-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="20" cy="20" r="14"/>
+          <circle cx="20" cy="20" r="6"/>
+          <line x1="20" y1="4"  x2="20" y2="10"/>
+          <line x1="20" y1="30" x2="20" y2="36"/>
+          <line x1="4"  y1="20" x2="10" y2="20"/>
+          <line x1="30" y1="20" x2="36" y2="20"/>
+        </svg>
+        <h3 class="feature-title">Process Identification</h3>
+        <p class="feature-desc">Pinpoints the exact PID responsible for suspicious writes using I/O tracking — on Linux via /proc, on Windows via continuous io_counters polling.</p>
+      </div>
+
+      <!-- Cross-Platform -->
+      <div class="feature-card fade-in">
+        <svg class="feature-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6"  y="6"  width="12" height="12" rx="1"/>
+          <rect x="22" y="6"  width="12" height="12" rx="1"/>
+          <rect x="6"  y="22" width="12" height="12" rx="1"/>
+          <rect x="22" y="22" width="12" height="12" rx="1"/>
+        </svg>
+        <h3 class="feature-title">Cross-Platform</h3>
+        <p class="feature-desc">Native implementation for both Linux and Windows. Same detection accuracy, the same GUI, purpose-built for each OS's file system and process model.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── How It Works ──────────────────────────────────────── -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-header fade-in" style="text-align:center;">
+      <p class="section-label">How It Works</p>
+      <h2 class="section-heading">Three steps. One shield.</h2>
+      <p class="section-sub" style="margin:0 auto;">From install to protection in minutes. RANZER runs quietly in the background and acts the moment a threat is confirmed.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step fade-in">
+        <span class="step-number">01</span>
+        <h3 class="step-title">Monitor</h3>
+        <p class="step-desc">Choose the directories you want to protect. RANZER deploys honey files, starts watching file events, and begins tracking process write rates — all immediately.</p>
+      </div>
+      <div class="step fade-in">
+        <span class="step-number">02</span>
+        <h3 class="step-title">Detect</h3>
+        <p class="step-desc">Every file event is scored. Entropy spikes, honey file touches, and write rate surges each contribute to a threat score. Signals are correlated across all detection layers.</p>
+      </div>
+      <div class="step fade-in">
+        <span class="step-number">03</span>
+        <h3 class="step-title">Terminate</h3>
+        <p class="step-desc">When the score reaches CRITICAL, RANZER terminates the ransomware process instantly. The GUI shows you exactly which process was caught and why.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── Download ───────────────────────────────────────────── -->
+<section class="download" id="download">
+  <div class="container">
+    <div class="section-header fade-in" style="text-align:center;">
+      <p class="section-label">Download</p>
+      <h2 class="section-heading">Get RANZER.</h2>
+      <p class="section-sub" style="margin:0 auto;">Available for Windows and Linux. Install in minutes with the one-click installer or set up from source via GitHub.</p>
+    </div>
+
+    <div class="download-grid">
+
+      <!-- Windows -->
+      <div class="download-card fade-in">
+        <svg class="download-card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4"  y="4"  width="18" height="18" rx="1"/>
+          <rect x="26" y="4"  width="18" height="18" rx="1"/>
+          <rect x="4"  y="26" width="18" height="18" rx="1"/>
+          <rect x="26" y="26" width="18" height="18" rx="1"/>
+        </svg>
+        <div>
+          <p class="download-card-os">Windows</p>
+          <h3 class="download-card-title">RANZER for Windows</h3>
+        </div>
+        <p class="download-card-desc">
+          One-click installer for Windows 10 and 11. Includes the full GUI, auto-start, and Start Menu integration. Run as Administrator to install.
+        </p>
+        <p class="download-card-meta">Requires Python 3.10+ &nbsp;·&nbsp; Windows 10 / 11</p>
+        <div class="download-card-actions">
+          <a href="install-windows.html" class="btn btn-primary">Download Installer</a>
+          <a href="#github" class="btn btn-secondary">Install from Source</a>
+        </div>
+      </div>
+
+      <!-- Linux -->
+      <div class="download-card fade-in">
+        <svg class="download-card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="16" r="8"/>
+          <path d="M16 28c-6 2-10 6-10 10h36c0-4-4-8-10-10"/>
+          <line x1="24" y1="24" x2="24" y2="28"/>
+          <circle cx="24" cy="16" r="3" fill="currentColor" stroke="none" opacity="0.2"/>
+        </svg>
+        <div>
+          <p class="download-card-os">Linux</p>
+          <h3 class="download-card-title">RANZER for Linux</h3>
+        </div>
+        <p class="download-card-desc">
+          Debian package for Ubuntu, Debian, and derivatives. Includes the full GUI, system service integration, and desktop launcher.
+        </p>
+        <p class="download-card-meta">Ubuntu 20.04+ / Debian 11+ / Kali &nbsp;·&nbsp; amd64 &amp; arm64</p>
+        <div class="download-card-actions">
+          <a href="install-linux.html" class="btn btn-primary">Download .deb</a>
+          <a href="#github" class="btn btn-secondary">Install from Source</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── GitHub Install ─────────────────────────────────────── -->
+<section class="github" id="github">
+  <div class="container">
+    <div class="section-header fade-in" style="text-align:center;">
+      <p class="section-label">Open Source</p>
+      <h2 class="section-heading">Install from source.</h2>
+      <p class="section-sub" style="margin:0 auto;">Prefer GitHub? Clone the repo and run directly. No build step required — just Python and the dependencies.</p>
+    </div>
+
+    <div class="install-tabs fade-in">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="linux">Linux</button>
+        <button class="tab-btn"        data-tab="windows">Windows</button>
+      </div>
+
+      <!-- Linux -->
+      <div class="tab-panel active" id="tab-linux">
+        <div class="code-block">
+<pre><span class="comment"># Clone the repository</span>
+<span class="cmd">git clone</span> https://github.com/RIVIRU05/Ranzer.git
+<span class="cmd">cd</span> ranzer
+
+<span class="comment"># Install dependencies</span>
+<span class="cmd">pip install</span> <span class="flag">-r</span> requirements.txt
+
+<span class="comment"># Launch the GUI</span>
+<span class="cmd">python3 -m ranzer gui</span>
+
+<span class="comment"># Or run from CLI (monitor a directory)</span>
+<span class="cmd">python3 -m ranzer monitor</span> <span class="flag">--dir</span> ~/Documents <span class="flag">--auto-terminate</span></pre>
+        </div>
+      </div>
+
+      <!-- Windows -->
+      <div class="tab-panel" id="tab-windows">
+        <div class="code-block">
+<pre><span class="comment"># Clone the repository (PowerShell or Git Bash)</span>
+<span class="cmd">git clone</span> https://github.com/RIVIRU05/Ranzer.git
+<span class="cmd">cd</span> ranzer
+
+<span class="comment"># Run the installer (as Administrator)</span>
+<span class="comment"># Right-click install.bat → "Run as administrator"</span>
+<span class="cmd">install.bat</span>
+
+<span class="comment"># Or launch directly without installing</span>
+<span class="cmd">pip install</span> <span class="flag">-r</span> requirements.txt
+<span class="cmd">python -m ranzer gui</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center; margin-top:32px; font-size:15px; color:var(--text-ter);">
+      View the full source on &nbsp;
+      <a href="https://github.com/RIVIRU05/Ranzer" style="color:#2563EB; font-weight:600;" target="_blank" rel="noopener">GitHub →</a>
+    </p>
+  </div>
+</section>
+
+
+<!-- ── CTA Banner ────────────────────────────────────────── -->
+<section class="cta-banner fade-in">
+  <div class="container">
+    <p class="section-label">Get Protected</p>
+    <h2 class="section-heading">Protect your machine today.</h2>
+    <p class="section-sub">Free, open source, and takes minutes to set up. Your files deserve better than hoping ransomware never comes.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:40px;">
+      <a href="install-windows.html" class="btn btn-primary">Download for Windows</a>
+      <a href="install-linux.html" class="btn btn-secondary">Download for Linux</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── Footer ────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <img src="assets/logo_30_blue.png" alt="RANZER" class="footer-logo-img" />
+          RANZER
+        </div>
+        <p class="footer-copy">© 2026 RANZER. Open source software.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="https://github.com/RIVIRU05/Ranzer" target="_blank" rel="noopener">GitHub</a>
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#download">Download</a>
+        <a href="#github">Install from Source</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ── VU Attribution ─────────────────────────────────────── -->
+<div class="attribution">
+  <div class="attribution-inner">
+    <img src="assets/vu_logo.png" alt="Victoria University Australia" class="attribution-logo" />
+    <div class="attribution-divider"></div>
+    <p class="attribution-text">
+      Developed as part of an academic project at<br>
+      <strong>Victoria University, Melbourne, Australia</strong>
+    </p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Guide — RANZER</title>
+  <meta name="description" content="Complete user guide for RANZER. Learn how to set up monitoring, understand alerts, use the CLI, and test your protection." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Page hero ─────────────────────────────────────────── */
+    .guide-hero {
+      padding-top: calc(44px + 64px);
+      padding-bottom: 64px;
+      background-color: #0B1220;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(37,99,235,0.18) 0%, transparent 70%),
+        radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 100% 100%, 28px 28px;
+      text-align: center;
+    }
+    .breadcrumb { font-size: 13px; color: #475569; margin-bottom: 20px; }
+    .breadcrumb a { color: #60A5FA; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .guide-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+    }
+    .guide-hero-sub {
+      font-size: 18px;
+      color: #94A3B8;
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 27px;
+    }
+
+    /* ── Sticky sidebar TOC ─────────────────────────────────── */
+    .guide-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 40px;
+      align-items: start;
+    }
+    .guide-toc {
+      position: sticky;
+      top: 60px;
+    }
+    .toc-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-ter);
+      margin-bottom: 14px;
+    }
+    .toc-list { display: flex; flex-direction: column; gap: 2px; }
+    .toc-link {
+      display: block;
+      font-size: 14px;
+      color: var(--text-ter);
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+      line-height: 20px;
+    }
+    .toc-link:hover { background: #EFF6FF; color: var(--primary); }
+    .toc-link.active { color: var(--primary); font-weight: 500; }
+    .toc-link.sub { padding-left: 22px; font-size: 13px; }
+
+    /* ── Guide content ──────────────────────────────────────── */
+    .guide-content { min-width: 0; }
+    .guide-block {
+      padding-bottom: 72px;
+      border-bottom: 1px solid var(--surface);
+      margin-bottom: 72px;
+    }
+    .guide-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .block-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .block-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--text-dom);
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+    .block-intro {
+      font-size: 16px;
+      line-height: 26px;
+      color: var(--text-ter);
+      margin-bottom: 40px;
+      max-width: 640px;
+    }
+
+    /* Numbered steps within guide block */
+    .guide-steps { display: flex; flex-direction: column; }
+    .guide-step {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 0 20px;
+      position: relative;
+    }
+    .step-line {
+      position: absolute;
+      left: 21px; top: 44px; bottom: -1px;
+      width: 2px;
+      background: var(--surface);
+    }
+    .step-num {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .step-body { padding-bottom: 40px; }
+    .guide-step:last-child .step-body { padding-bottom: 0; }
+    .step-body h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-dom);
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .step-body p { font-size: 15px; line-height: 24px; color: var(--text-sec); margin-bottom: 10px; }
+    .step-body p:last-child { margin-bottom: 0; }
+    .step-body .code-block { margin-top: 12px; }
+    .inline-code {
+      font-family: "SF Mono", "Fira Code", Menlo, monospace;
+      font-size: 13px;
+      background: #F1F5F9;
+      padding: 2px 7px;
+      border-radius: 4px;
+      color: var(--text-dom);
+    }
+    .note {
+      background: #EFF6FF;
+      border-left: 3px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+      color: var(--text-sec);
+      line-height: 21px;
+      margin-top: 12px;
+    }
+    .warn {
+      background: #FFF7ED;
+      border-left: 3px solid #F97316;
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+      color: #7C3A12;
+      line-height: 21px;
+      margin-top: 12px;
+    }
+    .success {
+      background: #F0FDF4;
+      border-left: 3px solid #22C55E;
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+      color: #14532D;
+      line-height: 21px;
+      margin-top: 12px;
+    }
+
+    /* Detection method cards */
+    .detect-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+    .detect-card {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 0 16px;
+      align-items: start;
+      padding: 20px;
+      border: 1px solid var(--surface);
+      background: #FAFBFC;
+    }
+    .detect-icon {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .detect-card h4 { font-size: 15px; font-weight: 600; color: var(--text-dom); margin-bottom: 6px; }
+    .detect-card p { font-size: 13px; color: var(--text-ter); line-height: 20px; margin: 0; }
+
+    /* Alert level cards */
+    .alert-levels { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+    .alert-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 22px;
+      border: 1px solid var(--surface);
+      border-left: 4px solid;
+    }
+    .alert-card.info  { border-left-color: #3B82F6; background: #F8FBFF; }
+    .alert-card.warn  { border-left-color: #F59E0B; background: #FFFBF0; }
+    .alert-card.crit  { border-left-color: #EF4444; background: #FFF8F8; }
+    .alert-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .alert-card h4 { font-size: 15px; font-weight: 600; color: var(--text-dom); margin-bottom: 6px; }
+    .alert-card p { font-size: 13px; color: var(--text-ter); line-height: 20px; margin-bottom: 8px; }
+    .alert-card p:last-child { margin-bottom: 0; }
+    .alert-action {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+      background: #EFF6FF;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-top: 4px;
+    }
+
+    /* CLI table */
+    .cli-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      font-size: 14px;
+    }
+    .cli-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: #F8FAFC;
+      border: 1px solid var(--surface);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-ter);
+    }
+    .cli-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--surface);
+      color: var(--text-sec);
+      vertical-align: top;
+      line-height: 21px;
+    }
+    .cli-table td:first-child {
+      font-family: "SF Mono", "Fira Code", Menlo, monospace;
+      font-size: 12px;
+      color: #30D158;
+      background: var(--dark-surface);
+      white-space: nowrap;
+    }
+
+    /* Quick-start feature grid */
+    .tip-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .tip-card {
+      padding: 22px;
+      border: 1px solid var(--surface);
+      font-size: 14px;
+      line-height: 22px;
+      color: var(--text-sec);
+      background: #FAFBFC;
+    }
+    .tip-card strong { display: block; font-size: 15px; color: var(--text-dom); margin-bottom: 6px; }
+
+    /* Recovery steps */
+    .recovery-steps { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+    .recovery-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 18px;
+      border: 1px solid var(--surface);
+      background: #FAFBFC;
+    }
+    .recovery-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: #EFF6FF;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .recovery-step p { font-size: 14px; line-height: 22px; color: var(--text-sec); margin: 0; }
+    .recovery-step strong { color: var(--text-dom); }
+
+    @media (max-width: 1023px) {
+      .guide-layout { grid-template-columns: 1fr; gap: 0; padding: 48px 24px; }
+      .guide-toc { display: none; }
+      .tip-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 767px) {
+      .guide-layout { padding: 40px 16px; }
+      .guide-hero { padding-top: calc(44px + 36px); padding-bottom: 48px; }
+      .block-title { font-size: 26px; }
+      .cli-table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ──────────────────────────────────────────────── -->
+<nav class="nav scrolled" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo_30_blue.png" alt="RANZER" class="nav-logo-img" />
+      RANZER
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#download">Download</a></li>
+      <li><a href="how-to-use.html" style="color:var(--primary);">User Guide</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="index.html#download" class="btn btn-primary btn-sm">Download</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <line x1="3" y1="6"  x2="17" y2="6"/>
+        <line x1="3" y1="10" x2="17" y2="10"/>
+        <line x1="3" y1="14" x2="17" y2="14"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <a href="index.html#features" class="drawer-link">Features</a>
+  <a href="index.html#download" class="drawer-link">Download</a>
+  <a href="how-to-use.html"     class="drawer-link">User Guide</a>
+  <a href="open-source.html"    class="drawer-link">Open Source</a>
+  <a href="index.html#download" class="btn btn-primary drawer-cta">Download RANZER</a>
+</div>
+
+
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<div class="guide-hero">
+  <div class="container">
+    <p class="breadcrumb">
+      <a href="index.html">RANZER</a> &rsaquo; User Guide
+    </p>
+    <h1 class="guide-hero-title">User Guide</h1>
+    <p class="guide-hero-sub">Everything you need to know — from first launch to advanced CLI usage.</p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a href="#first-launch" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.25); color:#fff; height:42px; font-size:14px;">GUI Walkthrough</a>
+      <a href="#cli" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.25); color:#fff; height:42px; font-size:14px;">CLI Reference</a>
+      <a href="#test" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.25); color:#fff; height:42px; font-size:14px;">Test Detection</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── Guide layout ──────────────────────────────────────── -->
+<div class="guide-layout">
+
+  <!-- Sidebar TOC -->
+  <aside class="guide-toc">
+    <p class="toc-title">Contents</p>
+    <nav class="toc-list">
+      <a href="#first-launch"   class="toc-link">First Launch</a>
+      <a href="#monitoring"     class="toc-link">Setting Up Monitoring</a>
+      <a href="#dashboard"      class="toc-link">Reading the Dashboard</a>
+      <a href="#how-it-detects" class="toc-link">How Detection Works</a>
+      <a href="#alerts"         class="toc-link">Understanding Alerts</a>
+      <a href="#auto-terminate" class="toc-link">Auto-Terminate</a>
+      <a href="#after-detection" class="toc-link">After Detection</a>
+      <a href="#false-positives" class="toc-link">False Positives</a>
+      <a href="#startup"        class="toc-link">Run on Startup</a>
+      <a href="#cli"            class="toc-link">CLI Reference</a>
+      <a href="#test"           class="toc-link">Testing Detection</a>
+      <a href="#tips"           class="toc-link">Tips &amp; Best Practices</a>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="guide-content">
+
+    <!-- ── First Launch ─────────────────────────────────────── -->
+    <div class="guide-block" id="first-launch">
+      <p class="block-label">Getting Started</p>
+      <h2 class="block-title">First Launch</h2>
+      <p class="block-intro">When you open RANZER for the first time you'll go through a short setup flow before monitoring starts. Here's exactly what to expect on each screen.</p>
+
+      <div class="guide-steps">
+        <div class="guide-step">
+          <div class="step-line"></div>
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Open RANZER</h3>
+            <p><strong>Windows:</strong> Click the RANZER shortcut in the Start Menu. You can also launch it from a new Command Prompt:</p>
+            <div class="code-block"><pre><span class="cmd">ranzer gui</span></pre></div>
+            <p><strong>Linux:</strong> Find RANZER in your Applications menu under <em>System</em> or <em>Security</em>, or run it from a terminal:</p>
+            <div class="code-block"><pre><span class="cmd">ranzer gui</span></pre></div>
+            <div class="note">On Windows, right-click RANZER and choose <strong>Run as administrator</strong> for full process termination capability across all users.</div>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="step-line"></div>
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>The landing screen</h3>
+            <p>The first screen you see is a brief introduction explaining what RANZER does and how it works. This screen has two buttons:</p>
+            <p>
+              · <strong>Get Started</strong> — moves you to the Setup screen to configure monitoring<br>
+              · <strong>Learn More</strong> — opens the GitHub repository in your browser
+            </p>
+            <p>Click <strong>Get Started</strong> when you're ready.</p>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>The Setup screen</h3>
+            <p>This is where you tell RANZER which folders to protect and how aggressively to respond. You only need to do this once — RANZER remembers your settings the next time you open it.</p>
+            <p>See the <a href="#monitoring" style="color:var(--primary);">Setting Up Monitoring</a> section below for a full walkthrough of every option on this screen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── Monitoring ───────────────────────────────────────── -->
+    <div class="guide-block" id="monitoring">
+      <p class="block-label">Configuration</p>
+      <h2 class="block-title">Setting Up Monitoring</h2>
+      <p class="block-intro">Choose which folders you want RANZER to protect and how it should respond when it detects an attack. You can monitor multiple directories simultaneously.</p>
+
+      <div class="guide-steps">
+        <div class="guide-step">
+          <div class="step-line"></div>
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Add your directories</h3>
+            <p>In the Setup screen, click <strong>Add Directory</strong> and choose a folder from the file browser. Repeat this for every folder you want to protect. Recommended folders to add:</p>
+            <p>
+              · <strong>Desktop</strong> — files dragged here are a primary ransomware target<br>
+              · <strong>Documents</strong> — office files, PDFs, spreadsheets<br>
+              · <strong>Downloads</strong> — any file downloaded from the internet<br>
+              · <strong>Pictures / Videos</strong> — irreplaceable personal files<br>
+              · <strong>External drives</strong> — USB drives and mapped network shares
+            </p>
+            <div class="note">Focus on folders that contain your actual data. Avoid monitoring the drive root (<span class="inline-code">C:\</span> or <span class="inline-code">/</span>) — system processes modify thousands of files per minute there and will flood you with noise.</div>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="step-line"></div>
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Enable Honey Files</h3>
+            <p>When Honey Files is enabled, RANZER automatically creates a set of hidden decoy files inside each monitored directory. These files have no legitimate reason to be touched by any software. If any process reads or writes to them, RANZER raises an immediate alert — even before entropy or write-rate signals escalate.</p>
+            <p>This makes honey files the fastest and most reliable detection trigger. <strong>Keep this enabled.</strong></p>
+            <div class="note">Don't touch, rename, or delete any file starting with <span class="inline-code">.</span> in your monitored folders after RANZER starts — those are likely honey files, and removing them disables this detection method for that directory.</div>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="step-line"></div>
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Configure Auto-Terminate (optional)</h3>
+            <p>When enabled, RANZER kills the suspected ransomware process the moment a CRITICAL alert fires — no click required. This stops encryption mid-attack and limits the number of files damaged.</p>
+            <p>This is optional during your first setup. See the <a href="#auto-terminate" style="color:var(--primary);">Auto-Terminate section</a> for guidance on when it's safe to turn on.</p>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3>Start Monitoring</h3>
+            <p>Click <strong>Start Monitoring</strong>. RANZER immediately:</p>
+            <p>
+              · Deploys honey files into all configured directories<br>
+              · Begins watching for file system events (writes, renames, creations, deletions)<br>
+              · Starts sampling write rates per process<br>
+              · Enables entropy analysis on all file writes
+            </p>
+            <p>The app switches to the Dashboard view. RANZER is now actively protecting your files.</p>
+            <div class="success">Once monitoring starts you can minimize RANZER to the system tray. It continues running in the background — you don't need to keep the window open.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── Dashboard ────────────────────────────────────────── -->
+    <div class="guide-block" id="dashboard">
+      <p class="block-label">Live View</p>
+      <h2 class="block-title">Reading the Dashboard</h2>
+      <p class="block-intro">The Dashboard tab shows live statistics from all monitored directories. Understanding these metrics helps you distinguish normal activity from a genuine attack.</p>
+
+      <div class="tip-grid">
+        <div class="tip-card">
+          <strong>Events / sec</strong>
+          The number of file system events being processed right now — writes, renames, creations, deletions. A normal machine idle sits at 0–5. A sudden spike to 50+ is the first sign of ransomware bulk-encryption behaviour.
+        </div>
+        <div class="tip-card">
+          <strong>Threat Score</strong>
+          A composite score from 0–100 combining entropy, honey file access, and write rate. <strong>0–39</strong> is normal. <strong>40–69</strong> is elevated (WARNING). <strong>70–89</strong> is high. <strong>90–100</strong> is CRITICAL.
+        </div>
+        <div class="tip-card">
+          <strong>Active Processes</strong>
+          Processes currently writing to monitored directories, shown with their PID and name. RANZER tracks which process is responsible for each event, so you can identify a suspicious process by name.
+        </div>
+        <div class="tip-card">
+          <strong>Files Monitored</strong>
+          The total number of files RANZER is watching across all monitored directories, including honey files. A sudden large drop in this count (files disappearing) is a red flag.
+        </div>
+        <div class="tip-card">
+          <strong>Entropy Reading</strong>
+          Average randomness of recent file writes on a 0–8 scale. Normal files (text, code, documents) score 4–6. Encrypted output — the hallmark of ransomware — scores 7.8–8.0. Sustained high entropy from a single process is a major warning sign.
+        </div>
+        <div class="tip-card">
+          <strong>Alerts Log</strong>
+          A real-time list of every detection event since monitoring started, newest first. Each entry shows a timestamp, severity level, the process name and PID, and the file that triggered the event.
+        </div>
+      </div>
+
+      <div class="note" style="margin-top: 24px;">
+        <strong>What does a normal dashboard look like?</strong> Events/sec is low (under 5), Threat Score stays under 40, entropy reads are moderate (around 5–6), and the Alerts log shows only occasional INFO entries from apps you're actively using — like a text editor auto-saving.
+      </div>
+    </div>
+
+
+    <!-- ── How RANZER Detects ────────────────────────────────── -->
+    <div class="guide-block" id="how-it-detects">
+      <p class="block-label">Under the Hood</p>
+      <h2 class="block-title">How RANZER Detects Ransomware</h2>
+      <p class="block-intro">RANZER combines four independent detection methods and fuses their signals into a single threat score. No single method is relied on alone — this makes detection more accurate and harder to evade.</p>
+
+      <div class="detect-grid">
+        <div class="detect-card">
+          <div class="detect-icon">&#128916;</div>
+          <div>
+            <h4>Honey File Monitoring</h4>
+            <p>RANZER places hidden decoy files with realistic-looking names inside every monitored directory. No legitimate application has any reason to open these files. If any process touches a honey file, RANZER raises an immediate alert — this is the fastest and most reliable trigger. Real ransomware touches everything in a directory, so it hits these files within seconds of starting.</p>
+          </div>
+        </div>
+        <div class="detect-card">
+          <div class="detect-icon">&#128200;</div>
+          <div>
+            <h4>Write Rate Tracking</h4>
+            <p>RANZER monitors how many files per second each process is writing. A person saves one file at a time. Ransomware typically encrypts hundreds of files per minute in a tight loop. When a single process exceeds a configurable threshold, the write rate detector flags it as a WARNING and escalates to CRITICAL if the rate continues.</p>
+          </div>
+        </div>
+        <div class="detect-card">
+          <div class="detect-icon">&#9878;</div>
+          <div>
+            <h4>Shannon Entropy Analysis</h4>
+            <p>Every file written to a monitored directory is sampled and its Shannon entropy is calculated — a measure of how random the data is. Normal files (text documents, spreadsheets, source code) have entropy between 4 and 6. Encrypted output — which is the core product of all ransomware — has near-maximum entropy of 7.8–8.0. Sustained high-entropy writes from a single process are a strong indicator of active encryption.</p>
+          </div>
+        </div>
+        <div class="detect-card">
+          <div class="detect-icon">&#128195;</div>
+          <div>
+            <h4>File Extension Anomaly Detection</h4>
+            <p>Ransomware commonly renames files after encrypting them — replacing the original extension with a custom one like <span class="inline-code">.enc</span>, <span class="inline-code">.locked</span>, or a random string. RANZER watches for mass rename events where many files lose their original extensions simultaneously, which is a behavioural pattern unique to ransomware.</p>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top:28px; font-size:15px; line-height:24px; color:var(--text-sec);">These four signals are combined into a single <strong>Threat Score</strong> updated every 500ms. A CRITICAL alert requires multiple signals to confirm simultaneously — this prevents single-method false positives while ensuring genuine attacks are caught quickly.</p>
+    </div>
+
+
+    <!-- ── Alerts ────────────────────────────────────────────── -->
+    <div class="guide-block" id="alerts">
+      <p class="block-label">Detection</p>
+      <h2 class="block-title">Understanding Alerts</h2>
+      <p class="block-intro">Every suspicious event is logged in the Alerts tab with a severity level, timestamp, process name, PID, and the file that triggered it. Here's what each severity means and exactly what you should do.</p>
+
+      <div class="alert-levels">
+        <div class="alert-card info">
+          <div class="alert-dot" style="background:#3B82F6;"></div>
+          <div>
+            <h4>INFO — Normal file activity</h4>
+            <p>A file event was observed — a write, rename, creation, or deletion. This is routine background activity from apps you're running. RANZER logs it for visibility.</p>
+            <p><strong>Common sources:</strong> text editors auto-saving, browser downloads completing, cloud sync apps (Dropbox, OneDrive) syncing changes.</p>
+            <span class="alert-action">No action needed</span>
+          </div>
+        </div>
+        <div class="alert-card warn">
+          <div class="alert-dot" style="background:#F59E0B;"></div>
+          <div>
+            <h4>WARNING — Elevated signals</h4>
+            <p>One detection method has flagged something abnormal — typically higher-than-expected entropy in a file write, or a write rate spike from a single process. This alone isn't conclusive — backup tools, file converters, and compression software can all cause this legitimately.</p>
+            <p><strong>What to do:</strong> Check the process name shown in the alert. If it's a known app (e.g. <span class="inline-code">7z.exe</span>, <span class="inline-code">dropbox</span>, <span class="inline-code">restic</span>), it's a false positive — no action needed. If it's an unfamiliar process name or <span class="inline-code">python.exe</span> with no obvious reason, keep watching. If WARNINGs continue escalating, a CRITICAL alert may follow.</p>
+            <span class="alert-action">Investigate the process name</span>
+          </div>
+        </div>
+        <div class="alert-card crit">
+          <div class="alert-dot" style="background:#EF4444;"></div>
+          <div>
+            <h4>CRITICAL — Ransomware signature confirmed</h4>
+            <p>Multiple detection signals confirmed simultaneously — a honey file was accessed AND high-entropy writes are occurring AND a single process is producing a high write rate. This combination is a strong indicator of active ransomware encryption.</p>
+            <p>If Auto-Terminate is enabled, the process has already been killed. If not, you'll see a prominent pop-up alert with the option to terminate it immediately.</p>
+            <p><strong>What to do:</strong> If you didn't trigger this yourself (e.g. by running the built-in simulator), treat it as real. Disconnect from the internet immediately to prevent the ransomware from contacting its command-and-control server. Then check the PID shown in the alert — use Task Manager (Windows) or <span class="inline-code">kill -9 &lt;PID&gt;</span> (Linux) to terminate it if RANZER hasn't already. See the <a href="#after-detection" style="color:#EF4444;">After Detection</a> section for full recovery steps.</p>
+            <span class="alert-action" style="background:#FEE2E2; color:#EF4444;">Act immediately</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── Auto-terminate ───────────────────────────────────── -->
+    <div class="guide-block" id="auto-terminate">
+      <p class="block-label">Protection</p>
+      <h2 class="block-title">Auto-Terminate</h2>
+      <p class="block-intro">When enabled, RANZER kills the suspected ransomware process the instant a CRITICAL alert fires — stopping encryption before it spreads further. No user interaction required.</p>
+
+      <div class="guide-steps">
+        <div class="guide-step">
+          <div class="step-line"></div>
+          <div class="step-num">!</div>
+          <div class="step-body">
+            <h3>Before you enable it</h3>
+            <p>Auto-Terminate is powerful but requires care. In rare cases, a legitimate process performing large-scale writes — a backup tool, a database compaction job, a video encoder — could accumulate enough detection signals to cross the CRITICAL threshold.</p>
+            <div class="warn">Run RANZER in monitoring-only mode for at least a day before enabling Auto-Terminate. Review the Alerts tab to check whether any of your regularly-used apps are generating WARNINGs. If nothing legitimate is being flagged, you're ready to enable it.</div>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="step-line"></div>
+          <div class="step-num">✓</div>
+          <div class="step-body">
+            <h3>When it's safe to turn on</h3>
+            <p>Auto-Terminate is most effective and least risky when all of these are true:</p>
+            <p>
+              · You've reviewed at least one full day of alerts with no false-positive WARNINGs<br>
+              · The monitored directories contain only user files (not application data or databases)<br>
+              · You're primarily monitoring Desktop, Documents, Downloads, and Pictures<br>
+              · No scheduled backup jobs run against the monitored folders
+            </p>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="step-num">i</div>
+          <div class="step-body">
+            <h3>How termination works</h3>
+            <p>When RANZER terminates a process it sends a <span class="inline-code">SIGKILL</span> (Linux) or calls <span class="inline-code">TerminateProcess()</span> (Windows) — a hard kill that gives the process no chance to save state or communicate back to an attacker's server.</p>
+            <p>On Windows, RANZER needs to be running as administrator to terminate processes started by other users. On Linux, it can only terminate processes owned by the same user unless run with <span class="inline-code">sudo</span>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── After Detection ──────────────────────────────────── -->
+    <div class="guide-block" id="after-detection">
+      <p class="block-label">Recovery</p>
+      <h2 class="block-title">What to Do After Detection</h2>
+      <p class="block-intro">If RANZER fires a CRITICAL alert for something that isn't the built-in simulator, follow these steps immediately. Speed matters — the less time the ransomware runs, the fewer files it damages.</p>
+
+      <div class="recovery-steps">
+        <div class="recovery-step">
+          <div class="recovery-num">1</div>
+          <p><strong>Disconnect from the internet.</strong> Pull out the ethernet cable or disable Wi-Fi. Most modern ransomware contacts a remote server to receive an encryption key — cutting the connection may prevent it from completing the key exchange and makes some strains unable to encrypt further.</p>
+        </div>
+        <div class="recovery-step">
+          <div class="recovery-num">2</div>
+          <p><strong>Kill the process if it's still running.</strong> Check the PID shown in RANZER's CRITICAL alert. On Windows: open Task Manager → Details tab → find the PID → End Task. On Linux: run <span style="font-family:monospace; background:#F1F5F9; padding:2px 5px; border-radius:3px;">sudo kill -9 &lt;PID&gt;</span> in a terminal.</p>
+        </div>
+        <div class="recovery-step">
+          <div class="recovery-num">3</div>
+          <p><strong>Assess the damage.</strong> Browse your monitored folders and look for files that have been renamed with unfamiliar extensions like <span style="font-family:monospace; background:#F1F5F9; padding:2px 5px; border-radius:3px;">.enc</span>, <span style="font-family:monospace; background:#F1F5F9; padding:2px 5px; border-radius:3px;">.locked</span>, or a random string. The Alerts log in RANZER shows a timeline of exactly which files were touched and when, which helps you understand the scope.</p>
+        </div>
+        <div class="recovery-step">
+          <div class="recovery-num">4</div>
+          <p><strong>Do not pay the ransom.</strong> There is no guarantee that paying will result in decryption. Instead, check the ransomware strain against <a href="https://www.nomoreransom.org" target="_blank" rel="noopener" style="color:var(--primary);">nomoreransom.org</a> — a free resource from law enforcement agencies that provides decryption tools for known strains.</p>
+        </div>
+        <div class="recovery-step">
+          <div class="recovery-num">5</div>
+          <p><strong>Restore from backup.</strong> If you have recent backups (an external drive, cloud backup, Time Machine, or Windows Backup), restore the affected files from there. This is why regular backups are the single most effective ransomware defence alongside RANZER.</p>
+        </div>
+        <div class="recovery-step">
+          <div class="recovery-num">6</div>
+          <p><strong>Run a full antivirus scan.</strong> Before reconnecting to the internet, run a full system scan with your antivirus to find and remove the ransomware dropper. RANZER detects and stops the encryption — cleaning the root infection is the antivirus's job.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── False Positives ──────────────────────────────────── -->
+    <div class="guide-block" id="false-positives">
+      <p class="block-label">Tuning</p>
+      <h2 class="block-title">False Positives &amp; Tuning</h2>
+      <p class="block-intro">Some legitimate applications exhibit behaviour that resembles ransomware — bulk file writes, high-entropy output, or mass renames. Here's how to identify and handle false positives.</p>
+
+      <p style="font-size:15px; line-height:24px; color:var(--text-sec); margin-bottom:20px;"><strong>Common sources of false-positive WARNINGs:</strong></p>
+
+      <div class="tip-grid" style="margin-top:0;">
+        <div class="tip-card">
+          <strong>Backup software</strong>
+          Tools like Restic, Duplicati, Time Machine, or Windows Backup compress and write large amounts of data rapidly. They'll often trigger WARNINGs. They rarely reach CRITICAL because they don't touch honey files.
+        </div>
+        <div class="tip-card">
+          <strong>File compression</strong>
+          7-Zip, WinRAR, and similar tools create high-entropy output when compressing files. A large archive operation can trigger entropy-based WARNINGs.
+        </div>
+        <div class="tip-card">
+          <strong>Video encoding</strong>
+          Exporters like HandBrake or ffmpeg write large amounts of high-entropy video data. Avoid monitoring folders where active video exports land.
+        </div>
+        <div class="tip-card">
+          <strong>Cloud sync</strong>
+          Dropbox, OneDrive, and Google Drive sync agents perform batch writes when syncing large file sets. These typically produce INFO alerts at worst.
+        </div>
+        <div class="tip-card">
+          <strong>IDEs and code editors</strong>
+          Large projects with many auto-save operations (VS Code, JetBrains) can generate a mild write rate. These stay in INFO territory and don't escalate.
+        </div>
+        <div class="tip-card">
+          <strong>Database engines</strong>
+          SQLite, PostgreSQL, or MySQL performing writes inside a monitored folder can produce high write rates. Don't monitor folders that contain database files.
+        </div>
+      </div>
+
+      <div class="note" style="margin-top: 24px;">
+        <strong>How to reduce false positives:</strong> If a specific legitimate app is generating WARNINGs regularly, move its working directory outside your monitored folders, or exclude the specific subfolder from monitoring. The goal is to monitor where your irreplaceable personal files live — not every folder on your system.
+      </div>
+    </div>
+
+
+    <!-- ── Run on Startup ────────────────────────────────────── -->
+    <div class="guide-block" id="startup">
+      <p class="block-label">Always-On Protection</p>
+      <h2 class="block-title">Run RANZER on Startup</h2>
+      <p class="block-intro">For continuous protection, configure RANZER to start automatically when you log in. This ensures you're never unprotected after a reboot.</p>
+
+      <div class="guide-steps">
+        <div class="guide-step">
+          <div class="step-line"></div>
+          <div class="step-num">W</div>
+          <div class="step-body">
+            <h3>Windows — Task Scheduler</h3>
+            <p>Open <strong>Task Scheduler</strong> from the Start Menu and click <strong>Create Basic Task</strong>. Set the trigger to <em>When I log on</em>. For the action, set the program to:</p>
+            <div class="code-block"><pre>C:\Program Files\Ranzer\ranzer.exe gui</pre></div>
+            <p>Tick <strong>Run with highest privileges</strong> so RANZER has full process-termination access. Click Finish.</p>
+            <div class="note">Alternatively, create a shortcut to RANZER in your Startup folder: press <span class="inline-code">Win + R</span>, type <span class="inline-code">shell:startup</span>, and copy your RANZER shortcut there.</div>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="step-num">L</div>
+          <div class="step-body">
+            <h3>Linux — systemd user service</h3>
+            <p>Create a user service file so RANZER starts on login:</p>
+            <div class="code-block"><pre><span class="comment"># Create the service file</span>
+<span class="cmd">mkdir</span> -p ~/.config/systemd/user
+<span class="cmd">nano</span> ~/.config/systemd/user/ranzer.service</pre></div>
+            <p>Paste the following content:</p>
+            <div class="code-block"><pre>[Unit]
+Description=RANZER Ransomware Detection
+
+[Service]
+ExecStart=/usr/local/bin/ranzer gui
+Restart=on-failure
+
+[Install]
+WantedBy=default.target</pre></div>
+            <p>Enable and start it:</p>
+            <div class="code-block"><pre><span class="cmd">systemctl</span> <span class="flag">--user</span> enable ranzer
+<span class="cmd">systemctl</span> <span class="flag">--user</span> start ranzer</pre></div>
+            <div class="note">For CLI-only monitoring (e.g. a headless server), replace <span class="inline-code">ranzer gui</span> with <span class="inline-code">ranzer monitor --dir /home/you/Documents --honey --auto-terminate</span>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── CLI ──────────────────────────────────────────────── -->
+    <div class="guide-block" id="cli">
+      <p class="block-label">Advanced</p>
+      <h2 class="block-title">CLI Reference</h2>
+      <p class="block-intro">Every feature available in the GUI is also accessible from the command line — useful for servers, scripts, automated pipelines, and power users who prefer the terminal.</p>
+
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Command</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ranzer gui</td>
+            <td>Launch the graphical interface. This is the recommended way to use RANZER for most users.</td>
+          </tr>
+          <tr>
+            <td>ranzer monitor --dir &lt;path&gt;</td>
+            <td>Start monitoring a directory in CLI mode. File events, entropy readings, and alerts are printed to the terminal in real time. Press Ctrl+C to stop.</td>
+          </tr>
+          <tr>
+            <td>ranzer monitor --dir &lt;path&gt; --auto-terminate</td>
+            <td>Monitor with automatic process termination on CRITICAL alerts. When RANZER kills a process, it prints the PID and process name to the terminal.</td>
+          </tr>
+          <tr>
+            <td>ranzer monitor --dir &lt;path&gt; --honey</td>
+            <td>Deploy honey files into the target directory before starting the monitor. Honey files persist between sessions — you only need this flag the first time you monitor a new directory.</td>
+          </tr>
+          <tr>
+            <td>ranzer monitor --dir &lt;path&gt; --delay &lt;secs&gt;</td>
+            <td>Set the sampling interval in seconds (default: 0.5). Lower values (e.g. 0.1) are more responsive but use more CPU. Higher values (e.g. 2.0) reduce CPU usage but may detect attacks a second or two later.</td>
+          </tr>
+          <tr>
+            <td>ranzer monitor --dir &lt;path&gt; --threshold &lt;score&gt;</td>
+            <td>Set the Threat Score at which a CRITICAL alert fires (default: 90). Raise this to reduce false positives; lower it to be more aggressive. Valid range: 50–99.</td>
+          </tr>
+          <tr>
+            <td>ranzer simulate --dir &lt;path&gt;</td>
+            <td>Run the built-in four-phase ransomware simulator against a test directory. See the Testing Detection section for a full walkthrough.</td>
+          </tr>
+          <tr>
+            <td>ranzer simulate --dir &lt;path&gt; --new-only</td>
+            <td>Only run Phase 4 (new file creation with high-entropy data). Skips the in-place overwrite and rename phases — useful for testing entropy detection in isolation.</td>
+          </tr>
+          <tr>
+            <td>ranzer simulate --dir &lt;path&gt; --files &lt;n&gt;</td>
+            <td>Set how many files the simulator creates in Phase 4 (default: 50). Use a higher number to test detection with a larger attack volume.</td>
+          </tr>
+          <tr>
+            <td>ranzer --version</td>
+            <td>Print the installed RANZER version number.</td>
+          </tr>
+          <tr>
+            <td>ranzer --help</td>
+            <td>Show all available commands and flags with short descriptions.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="code-block" style="margin-top:28px;">
+<pre><span class="comment"># Recommended setup — GUI with full protection</span>
+<span class="cmd">ranzer gui</span>
+
+<span class="comment"># CLI — monitor Documents with auto-terminate and honey files</span>
+<span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/Documents <span class="flag">--auto-terminate</span> <span class="flag">--honey</span>
+
+<span class="comment"># CLI — monitor multiple directories simultaneously (background jobs)</span>
+<span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/Documents <span class="flag">--honey</span> &amp;
+<span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/Desktop <span class="flag">--honey</span> &amp;
+<span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/Downloads <span class="flag">--honey</span> &amp;
+
+<span class="comment"># CLI — more sensitive detection (lower threshold)</span>
+<span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/Documents <span class="flag">--threshold</span> 70 <span class="flag">--honey</span>
+
+<span class="comment"># CLI — lower CPU usage (sample every 2 seconds)</span>
+<span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/Documents <span class="flag">--delay</span> 2.0 <span class="flag">--honey</span></pre>
+      </div>
+    </div>
+
+
+    <!-- ── Test Detection ────────────────────────────────────── -->
+    <div class="guide-block" id="test">
+      <p class="block-label">Verification</p>
+      <h2 class="block-title">Testing Detection</h2>
+      <p class="block-intro">RANZER includes a built-in simulator that mimics real ransomware behaviour across four phases. Always test after setting up RANZER to confirm detection is live before you rely on it. Do this in a throwaway directory — not your real files.</p>
+
+      <div class="warn" style="margin-bottom:28px;">
+        <strong>The simulator overwrites files with random bytes.</strong> Only point it at a temporary test folder you create specifically for this purpose. Never use your actual Documents, Desktop, or Downloads folder for this test.
+      </div>
+
+      <div class="guide-steps">
+        <div class="guide-step">
+          <div class="step-line"></div>
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Create a test directory with dummy files</h3>
+            <p>The simulator needs existing files to overwrite in Phases 1 and 2. Create some empty dummy files:</p>
+            <div class="code-block"><pre><span class="comment"># Linux / macOS</span>
+<span class="cmd">mkdir</span> ~/ranzer_test
+<span class="cmd">touch</span> ~/ranzer_test/document.txt ~/ranzer_test/photo.jpg ~/ranzer_test/report.docx ~/ranzer_test/data.xlsx</pre></div>
+            <div class="code-block" style="margin-top:8px;"><pre><span class="comment"># Windows (Command Prompt)</span>
+<span class="cmd">mkdir</span> %USERPROFILE%\ranzer_test
+<span class="cmd">echo test</span> > %USERPROFILE%\ranzer_test\document.txt
+<span class="cmd">echo test</span> > %USERPROFILE%\ranzer_test\photo.jpg
+<span class="cmd">echo test</span> > %USERPROFILE%\ranzer_test\report.docx</pre></div>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-line"></div>
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Start RANZER monitoring the test directory</h3>
+            <p>Open a terminal and start RANZER with auto-terminate and honey files enabled, pointing at your test directory:</p>
+            <div class="code-block"><pre><span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/ranzer_test <span class="flag">--auto-terminate</span> <span class="flag">--honey</span></pre></div>
+            <p>Leave this terminal open and running. You'll see RANZER's output here when the simulator fires. Open a <strong>second terminal window</strong> for Step 3.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-line"></div>
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Run the simulator</h3>
+            <p>In your second terminal, run:</p>
+            <div class="code-block"><pre><span class="cmd">ranzer simulate</span> <span class="flag">--dir</span> ~/ranzer_test</pre></div>
+            <p>The simulator runs four phases that mimic a real ransomware attack:</p>
+            <p>
+              · <strong>Phase 1 — In-place encryption:</strong> Overwrites each file's contents with cryptographically-random bytes. This triggers entropy detection and the honey file engine simultaneously.<br>
+              · <strong>Phase 2 — Rename to encrypted extension:</strong> Renames all files to <span class="inline-code">filename.enc</span>. This triggers file extension anomaly detection.<br>
+              · <strong>Phase 3 — Ransom note drop:</strong> Creates a <span class="inline-code">README_DECRYPT.txt</span> file. This simulates the note left by real ransomware and triggers a honey file access if the decoy file was near it.<br>
+              · <strong>Phase 4 — New file flood:</strong> Creates 50 new high-entropy <span class="inline-code">.enc</span> files to simulate ongoing encryption of files that don't exist yet.
+            </p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-line"></div>
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3>Expected result</h3>
+            <p>RANZER should detect the simulator during Phase 1 or 2 — before Phase 4 even starts. In your first terminal you'll see output like:</p>
+            <div class="code-block"><pre><span class="comment">[CRITICAL] Threat score: 94/100 | PID: 12453 | ranzer_simulate</span>
+<span class="comment">[ACTION]   Auto-terminate: killed process 12453</span>
+<span class="comment">[HONEY]    Honey file accessed: .ranzer_honey_a3f9.bin</span></pre></div>
+            <p>The simulator process should be terminated and Phase 4 should not complete (fewer than 50 <span class="inline-code">.enc</span> files will exist in the test folder).</p>
+            <div class="note">If the simulator runs all the way to completion without being terminated, verify that: (1) you included both <span class="inline-code">--auto-terminate</span> and <span class="inline-code">--honey</span>, (2) the <span class="inline-code">--dir</span> path in both commands points to the same directory, and (3) RANZER was running before you started the simulator.</div>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h3>Clean up the test directory</h3>
+            <p>After the test, delete the test folder — the files inside have been overwritten with random data and are no longer the original dummy files:</p>
+            <div class="code-block"><pre><span class="comment"># Linux</span>
+<span class="cmd">rm</span> -rf ~/ranzer_test</pre></div>
+            <div class="code-block" style="margin-top:8px;"><pre><span class="comment"># Windows</span>
+<span class="cmd">rmdir</span> /s /q %USERPROFILE%\ranzer_test</pre></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── Tips ─────────────────────────────────────────────── -->
+    <div class="guide-block" id="tips">
+      <p class="block-label">Best Practices</p>
+      <h2 class="block-title">Tips &amp; Best Practices</h2>
+      <p class="block-intro">Get the most protection out of RANZER. These recommendations come from real-world usage and testing.</p>
+
+      <div class="tip-grid">
+        <div class="tip-card">
+          <strong>Monitor where your irreplaceable files live</strong>
+          Desktop, Documents, Downloads, Pictures, Videos, and any external drives. These are where ransomware strikes first because they contain the highest-value files.
+        </div>
+        <div class="tip-card">
+          <strong>Never monitor system folders</strong>
+          Avoid <span class="inline-code">C:\Windows</span>, <span class="inline-code">/usr</span>, <span class="inline-code">/etc</span>, or <span class="inline-code">/var</span>. System processes modify these constantly and will generate a flood of INFO and WARNING alerts that drown out real threats.
+        </div>
+        <div class="tip-card">
+          <strong>Test after every setup change</strong>
+          Any time you add a new directory or change settings, run the simulator against a test folder to confirm detection is still working. Don't assume — verify.
+        </div>
+        <div class="tip-card">
+          <strong>Don't touch honey files</strong>
+          RANZER places hidden decoy files automatically. Never rename, move, or delete any file you don't recognise in your monitored folders. If a honey file is removed, that directory loses its fastest detection method.
+        </div>
+        <div class="tip-card">
+          <strong>Run as administrator on Windows</strong>
+          Launching RANZER with administrator rights gives it permission to terminate processes started by any user on the machine. Without it, RANZER can only terminate processes in your own session.
+        </div>
+        <div class="tip-card">
+          <strong>Trial period before Auto-Terminate</strong>
+          Run in monitoring-only mode for a full working day. Check the Alerts log for any legitimate apps generating WARNINGs. Once you're confident in the accuracy, enable Auto-Terminate for maximum protection.
+        </div>
+        <div class="tip-card">
+          <strong>Keep backups regardless</strong>
+          RANZER dramatically limits damage, but it's not a substitute for backups. RANZER stops encryption in seconds — but even seconds can mean dozens of files. A recent backup is your safety net for those files.
+        </div>
+        <div class="tip-card">
+          <strong>Use the GUI for daily use, CLI for servers</strong>
+          The GUI is the easiest way to set up and monitor RANZER on a desktop or laptop. For headless Linux servers with no display, use CLI mode with <span class="inline-code">ranzer monitor</span> and a systemd service to keep it running.
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div><!-- /guide-layout -->
+
+
+<!-- ── Footer ───────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <img src="assets/logo_30_blue.png" alt="RANZER" class="footer-logo-img" />
+          RANZER
+        </div>
+        <p class="footer-copy">© 2026 RANZER. Open source software.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="https://github.com/RIVIRU05/Ranzer" target="_blank" rel="noopener">GitHub</a>
+        <a href="index.html#features">Features</a>
+        <a href="install-windows.html">Windows</a>
+        <a href="install-linux.html">Linux</a>
+        <a href="how-to-use.html">User Guide</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<div class="attribution">
+  <div class="attribution-inner">
+    <img src="assets/vu_logo.png" alt="Victoria University Australia" class="attribution-logo" />
+    <div class="attribution-divider"></div>
+    <p class="attribution-text">
+      Developed as part of an academic project at<br>
+      <strong>Victoria University, Melbourne, Australia</strong>
+    </p>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const drawer    = document.getElementById('drawer');
+  hamburger.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  drawer.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { drawer.classList.remove('open'); document.body.style.overflow = ''; }
+  });
+
+  // Smooth scroll with nav offset
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const id = anchor.getAttribute('href').slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      window.scrollTo({ top: target.offsetTop - 68, behavior: 'smooth' });
+    });
+  });
+
+  // TOC active state
+  const sections = document.querySelectorAll('.guide-block');
+  const tocLinks = document.querySelectorAll('.toc-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    tocLinks.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>
