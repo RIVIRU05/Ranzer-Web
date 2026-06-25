@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Download & Install — RANZER</title>
+  <title>Download & Install - RANZER</title>
   <meta name="description" content="Download RANZER for Windows or Linux. Full installation guide and usage walkthrough." />
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -426,7 +426,7 @@
       </div>
       <div class="platform-header-text">
         <h2>Windows Installation</h2>
-        <p>One-click wizard installer — no technical knowledge needed.</p>
+        <p>One-click wizard installer - no technical knowledge needed.</p>
       </div>
     </div>
 
@@ -469,9 +469,9 @@
           <h3>Check Python is installed</h3>
           <p>RANZER requires Python 3.10 or later. Open a Command Prompt and run:</p>
           <div class="code-block"><pre><span class="cmd">python --version</span></pre></div>
-          <p>If you see <span class="inline-code">Python 3.10.x</span> or higher, you're ready. If not — or if you get an error — download and install Python first:</p>
+          <p>If you see <span class="inline-code">Python 3.10.x</span> or higher, you're ready. If not - or if you get an error - download and install Python first:</p>
           <div class="note">
-            Download Python from <strong>python.org/downloads</strong> — during installation, tick <strong>"Add Python to PATH"</strong> and <strong>"Install for all users"</strong>. Then restart your computer before continuing.
+            Download Python from <strong>python.org/downloads</strong> - during installation, tick <strong>"Add Python to PATH"</strong> and <strong>"Install for all users"</strong>. Then restart your computer before continuing.
           </div>
         </div>
       </div>
@@ -483,7 +483,7 @@
           <h3>Run the installer as Administrator</h3>
           <p>Right-click <span class="inline-code">RANZER_Setup.exe</span> and choose <strong>Run as administrator</strong>. This is required to add RANZER to your system PATH and create Start Menu shortcuts.</p>
           <div class="warn">
-            Windows may show a SmartScreen warning because the installer is not yet code-signed. Click <strong>More info → Run anyway</strong> to proceed. RANZER is open source — you can verify the source code on GitHub.
+            Windows may show a SmartScreen warning because the installer is not yet code-signed. Click <strong>More info → Run anyway</strong> to proceed. RANZER is open source - you can verify the source code on GitHub.
           </div>
         </div>
       </div>
@@ -512,7 +512,7 @@
           <h3>Launch RANZER</h3>
           <p>Once installation is complete, you can launch RANZER in two ways:</p>
           <p><strong>From Start Menu:</strong> Press the Windows key, type <span class="inline-code">RANZER</span>, and click the app icon.</p>
-          <p><strong>From Command Prompt:</strong> Open a new terminal window (important — existing windows won't have the updated PATH) and run:</p>
+          <p><strong>From Command Prompt:</strong> Open a new terminal window (important - existing windows won't have the updated PATH) and run:</p>
           <div class="code-block"><pre><span class="cmd">ranzer gui</span></pre></div>
           <div class="note">Open a <strong>new</strong> Command Prompt after installing. Existing windows won't see the updated PATH until restarted.
           </div>
@@ -540,9 +540,9 @@
     <!-- Troubleshoot -->
     <div id="troubleshoot-win" style="margin-top: 32px; padding: 28px 32px; background: #F8FAFC; border: 1px solid var(--surface);">
       <h3 style="font-family:var(--font-display); font-size:17px; font-weight:600; color:var(--text-dom); margin-bottom:16px;">Troubleshooting</h3>
-      <p style="font-size:14px; line-height:22px; color:var(--text-sec); margin-bottom:10px;"><strong>'ranzer' is not recognized</strong> — Open a <em>new</em> Command Prompt window. If still failing, restart your PC to refresh environment variables.</p>
-      <p style="font-size:14px; line-height:22px; color:var(--text-sec); margin-bottom:10px;"><strong>Python not found during install</strong> — Install Python 3.10+ from python.org, tick "Add Python to PATH", restart, then re-run the installer.</p>
-      <p style="font-size:14px; line-height:22px; color:var(--text-sec);"><strong>GUI doesn't open</strong> — Run <span class="inline-code">python -m ranzer gui</span> in a terminal to see the error message directly.</p>
+      <p style="font-size:14px; line-height:22px; color:var(--text-sec); margin-bottom:10px;"><strong>'ranzer' is not recognized</strong> - Open a <em>new</em> Command Prompt window. If still failing, restart your PC to refresh environment variables.</p>
+      <p style="font-size:14px; line-height:22px; color:var(--text-sec); margin-bottom:10px;"><strong>Python not found during install</strong> - Install Python 3.10+ from python.org, tick "Add Python to PATH", restart, then re-run the installer.</p>
+      <p style="font-size:14px; line-height:22px; color:var(--text-sec);"><strong>GUI doesn't open</strong> - Run <span class="inline-code">python -m ranzer gui</span> in a terminal to see the error message directly.</p>
     </div>
 
   </div>
@@ -605,7 +605,7 @@
         <div class="step-num">1</div>
         <div class="step-body">
           <h3>Download the .deb file</h3>
-          <p>Click the button above to download <span class="inline-code">ranzer_1.0_amd64.deb</span> to your Downloads folder. The file contains a self-contained RANZER bundle — no Python installation required.</p>
+          <p>Click the button above to download <span class="inline-code">ranzer_1.0_amd64.deb</span> to your Downloads folder. The file contains a self-contained RANZER bundle - no Python installation required.</p>
         </div>
       </div>
 
@@ -617,7 +617,7 @@
           <p>Open a terminal, navigate to your Downloads folder, and run:</p>
           <div class="code-block"><pre><span class="cmd">cd</span> ~/Downloads
 <span class="cmd">sudo apt install</span> ./ranzer_1.0_amd64.deb</pre></div>
-          <p>The <span class="inline-code">./</span> prefix is important — it tells apt to install from a local file, not search online repositories. Enter your password when prompted.</p>
+          <p>The <span class="inline-code">./</span> prefix is important - it tells apt to install from a local file, not search online repositories. Enter your password when prompted.</p>
           <div class="note">
             <strong>Why terminal?</strong> Double-clicking a .deb file opens the Archive Manager on some systems (Kali, minimal Ubuntu) instead of an installer. The <span class="inline-code">sudo apt install ./file.deb</span> command is the reliable, one-line method that works on every apt-based distro.
           </div>
@@ -660,9 +660,9 @@
     <!-- Troubleshoot -->
     <div style="margin-top: 32px; padding: 28px 32px; background: #fff; border: 1px solid #CBD5E1;">
       <h3 style="font-family:var(--font-display); font-size:17px; font-weight:600; color:var(--text-dom); margin-bottom:16px;">Troubleshooting</h3>
-      <p style="font-size:14px; line-height:22px; color:var(--text-sec); margin-bottom:10px;"><strong>dpkg: dependency problems</strong> — Run <span class="inline-code">sudo apt-get install -f</span> after the failed install to auto-resolve missing dependencies.</p>
-      <p style="font-size:14px; line-height:22px; color:var(--text-sec); margin-bottom:10px;"><strong>GUI doesn't launch</strong> — Make sure you have a display server running. On Kali headless/server, install <span class="inline-code">python3-tk</span> and set <span class="inline-code">DISPLAY=:0</span>.</p>
-      <p style="font-size:14px; line-height:22px; color:var(--text-sec);"><strong>'ranzer' not found after install</strong> — Run <span class="inline-code">hash -r</span> in your shell or open a new terminal to refresh the command cache.</p>
+      <p style="font-size:14px; line-height:22px; color:var(--text-sec); margin-bottom:10px;"><strong>dpkg: dependency problems</strong> - Run <span class="inline-code">sudo apt-get install -f</span> after the failed install to auto-resolve missing dependencies.</p>
+      <p style="font-size:14px; line-height:22px; color:var(--text-sec); margin-bottom:10px;"><strong>GUI doesn't launch</strong> - Make sure you have a display server running. On Kali headless/server, install <span class="inline-code">python3-tk</span> and set <span class="inline-code">DISPLAY=:0</span>.</p>
+      <p style="font-size:14px; line-height:22px; color:var(--text-sec);"><strong>'ranzer' not found after install</strong> - Run <span class="inline-code">hash -r</span> in your shell or open a new terminal to refresh the command cache.</p>
     </div>
 
   </div>
@@ -689,7 +689,7 @@
         <div class="step-line"></div>
         <div class="step-num">1</div>
         <div class="step-body">
-          <h3>First launch — the landing screen</h3>
+          <h3>First launch - the landing screen</h3>
           <p>When RANZER opens you'll see a landing screen with a brief overview of what the tool does. Click <strong>Get Started</strong> to move to the setup screen.</p>
         </div>
       </div>
@@ -699,9 +699,9 @@
         <div class="step-num">2</div>
         <div class="step-body">
           <h3>Choose directories to monitor</h3>
-          <p>Click <strong>Add Directory</strong> and select folders you want to protect — your Desktop, Documents, Downloads, or any folder containing important files.</p>
+          <p>Click <strong>Add Directory</strong> and select folders you want to protect - your Desktop, Documents, Downloads, or any folder containing important files.</p>
           <p>You can add multiple directories. RANZER monitors each one independently with its own set of honey files.</p>
-          <div class="note">Avoid monitoring the entire root drive (<span class="inline-code">C:\</span> or <span class="inline-code">/</span>) — focus on folders that hold your actual data for best performance.
+          <div class="note">Avoid monitoring the entire root drive (<span class="inline-code">C:\</span> or <span class="inline-code">/</span>) - focus on folders that hold your actual data for best performance.
           </div>
         </div>
       </div>
@@ -711,7 +711,7 @@
         <div class="step-num">3</div>
         <div class="step-body">
           <h3>Configure auto-terminate</h3>
-          <p>In the Setup screen, you'll see the <strong>Auto-Terminate</strong> toggle. When enabled, RANZER will automatically kill any process that reaches a CRITICAL threat score — no confirmation needed.</p>
+          <p>In the Setup screen, you'll see the <strong>Auto-Terminate</strong> toggle. When enabled, RANZER will automatically kill any process that reaches a CRITICAL threat score - no confirmation needed.</p>
           <div class="warn">
             Enable Auto-Terminate only if you understand the implications. In rare cases, a legitimate process performing large-scale encryption (like a backup tool) could be misidentified. Review the Alerts tab first to see if RANZER is detecting false positives before enabling this.
           </div>
@@ -730,7 +730,7 @@
             · Start entropy analysis on file writes<br>
             · Begin tracking process write rates
           </p>
-          <p>The <strong>Dashboard</strong> tab shows live statistics — events per second, files monitored, active processes, and current threat scores.</p>
+          <p>The <strong>Dashboard</strong> tab shows live statistics - events per second, files monitored, active processes, and current threat scores.</p>
         </div>
       </div>
 
@@ -739,9 +739,9 @@
         <div class="step-num">5</div>
         <div class="step-body">
           <h3>Reading the Dashboard</h3>
-          <p><strong>Events/sec</strong> — how many file events are being processed right now. A sudden spike is the first sign of ransomware behaviour.</p>
-          <p><strong>Threat Score</strong> — a composite score from 0–100 based on entropy, honey file access, and write rate. Below 40 is normal. Above 70 is HIGH. Above 90 is CRITICAL.</p>
-          <p><strong>Active Processes</strong> — processes currently writing to monitored directories. RANZER tracks which PID is responsible for suspicious activity.</p>
+          <p><strong>Events/sec</strong> - how many file events are being processed right now. A sudden spike is the first sign of ransomware behaviour.</p>
+          <p><strong>Threat Score</strong> - a composite score from 0–100 based on entropy, honey file access, and write rate. Below 40 is normal. Above 70 is HIGH. Above 90 is CRITICAL.</p>
+          <p><strong>Active Processes</strong> - processes currently writing to monitored directories. RANZER tracks which PID is responsible for suspicious activity.</p>
         </div>
       </div>
 
@@ -755,7 +755,7 @@
               <div class="alert-dot" style="background:#3B82F6;"></div>
               <div>
                 <h4>INFO</h4>
-                <p>A file event was observed — write, rename, or creation. Normal background activity. No action needed.</p>
+                <p>A file event was observed - write, rename, or creation. Normal background activity. No action needed.</p>
               </div>
             </div>
             <div class="alert-level">
@@ -769,7 +769,7 @@
               <div class="alert-dot" style="background:#EF4444;"></div>
               <div>
                 <h4>CRITICAL</h4>
-                <p>Multiple detection signals confirmed simultaneously — typically a honey file access combined with high entropy. Strong indicator of ransomware. If Auto-Terminate is on, the process is killed immediately.</p>
+                <p>Multiple detection signals confirmed simultaneously - typically a honey file access combined with high entropy. Strong indicator of ransomware. If Auto-Terminate is on, the process is killed immediately.</p>
               </div>
             </div>
           </div>
@@ -781,7 +781,7 @@
     <!-- CLI Reference -->
     <div style="margin-top: 72px;">
       <h3 style="font-family:var(--font-display); font-size:22px; font-weight:600; color:var(--text-dom); margin-bottom:8px;">CLI Reference</h3>
-      <p style="font-size:15px; color:var(--text-ter); margin-bottom:0;">All RANZER features are available from the command line — useful for servers, scripts, and headless systems.</p>
+      <p style="font-size:15px; color:var(--text-ter); margin-bottom:0;">All RANZER features are available from the command line - useful for servers, scripts, and headless systems.</p>
 
       <table class="cli-table">
         <thead>
@@ -813,7 +813,7 @@
           </tr>
           <tr>
             <td>ranzer simulate --dir &lt;path&gt; --new-only</td>
-            <td>Simulate only new file creation (Phase 4) — skips in-place encryption and rename phases.</td>
+            <td>Simulate only new file creation (Phase 4) - skips in-place encryption and rename phases.</td>
           </tr>
           <tr>
             <td>ranzer --help</td>
@@ -835,10 +835,10 @@
 <span class="comment"># Start RANZER monitoring it (with auto-terminate)</span>
 <span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/ranzer_test <span class="flag">--auto-terminate</span> &amp;
 
-<span class="comment"># Run the simulator — RANZER should detect and terminate it</span>
+<span class="comment"># Run the simulator - RANZER should detect and terminate it</span>
 <span class="cmd">ranzer simulate</span> <span class="flag">--dir</span> ~/ranzer_test</pre>
       </div>
-      <p style="font-size:13px; color:#475569; margin-top:16px;">The simulator will be terminated by RANZER before it finishes writing all files. That's the expected result — it means detection is working correctly.</p>
+      <p style="font-size:13px; color:#475569; margin-top:16px;">The simulator will be terminated by RANZER before it finishes writing all files. That's the expected result - it means detection is working correctly.</p>
     </div>
 
   </div>

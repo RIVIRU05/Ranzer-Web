@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Install RANZER on Linux — RANZER</title>
+  <title>Install RANZER on Linux - RANZER</title>
   <meta name="description" content="Download and install RANZER on Ubuntu, Debian, Kali or any apt-based Linux. amd64 and arm64 packages available." />
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -324,7 +324,7 @@
 <!-- ── Architecture selector ─────────────────────────────── -->
 <section class="arch-section" id="download">
   <div class="container" style="text-align:center;">
-    <p class="arch-label">Step 1 — Choose your version</p>
+    <p class="arch-label">Step 1 - Choose your version</p>
     <h2 class="arch-heading">Which processor does your machine have?</h2>
     <p class="arch-sub">Not sure? Most laptops and PCs use <strong>amd64</strong>. Raspberry Pi and Apple Silicon VMs use <strong>arm64</strong>.</p>
 
@@ -334,7 +334,7 @@
       <div class="arch-card" style="opacity:0.6;">
         <span class="arch-card-badge recommended">Coming Soon</span>
         <h3>Linux amd64</h3>
-        <p>For Intel and AMD processors — desktops, laptops, and most cloud VMs.</p>
+        <p>For Intel and AMD processors - desktops, laptops, and most cloud VMs.</p>
         <span class="arch-card-meta">Ubuntu 20.04+ / Debian 11+ / Kali 2022+</span>
         <a href="#" class="btn btn-primary" style="pointer-events:none; opacity:0.5;">
           <svg style="width:16px;height:16px;margin-right:6px;" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 3v10M6 9l4 4 4-4"/><path d="M3 16h14"/></svg>
@@ -346,7 +346,7 @@
       <div class="arch-card">
         <span class="arch-card-badge recommended">Available Now</span>
         <h3>Linux arm64</h3>
-        <p>For ARM processors — Raspberry Pi 4/5, Apple Silicon Linux VMs, AWS Graviton.</p>
+        <p>For ARM processors - Raspberry Pi 4/5, Apple Silicon Linux VMs, AWS Graviton.</p>
         <span class="arch-card-meta">Ubuntu 22.04+ / Debian 12+ / Raspberry Pi OS</span>
         <a href="https://github.com/RIVIRU05/Ranzer/releases/download/v1.0/ranzer_1.0_arm64.deb" class="btn btn-primary">
           <svg style="width:16px;height:16px;margin-right:6px;" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 3v10M6 9l4 4 4-4"/><path d="M3 16h14"/></svg>
@@ -357,7 +357,7 @@
     </div>
 
     <p style="font-size:13px; color:var(--text-ter); margin-top:24px;">
-      To check your architecture: open a terminal and run <span style="font-family:monospace; background:#F1F5F9; padding:2px 6px; border-radius:3px;">uname -m</span> — <strong>x86_64</strong> means amd64, <strong>aarch64</strong> means arm64.
+      To check your architecture: open a terminal and run <span style="font-family:monospace; background:#F1F5F9; padding:2px 6px; border-radius:3px;">uname -m</span> - <strong>x86_64</strong> means amd64, <strong>aarch64</strong> means arm64.
     </p>
   </div>
 </section>
@@ -368,13 +368,13 @@
   <div class="container">
     <p class="steps-section-label">Installation Guide</p>
     <h2 class="steps-section-title">Follow these steps carefully</h2>
-    <p class="steps-section-sub">Takes about 1 minute. The most common mistake is double-clicking the .deb — it won't install on most distros. Use the terminal command in Step 2.</p>
+    <p class="steps-section-sub">Takes about 1 minute. The most common mistake is double-clicking the .deb - it won't install on most distros. Use the terminal command in Step 2.</p>
 
     <div class="steps-read-banner">
       <div class="steps-read-banner-icon">&#9888;</div>
       <div>
         <h4>Don't just double-click the .deb file</h4>
-        <p>On Kali, minimal Ubuntu, and most headless distros, double-clicking a .deb opens the Archive Manager (file browser) instead of an installer. Use the one-line <span style="font-family:monospace; color:#60A5FA;">apt install</span> command in Step 2 — it works on every apt-based distro without exception.</p>
+        <p>On Kali, minimal Ubuntu, and most headless distros, double-clicking a .deb opens the Archive Manager (file browser) instead of an installer. Use the one-line <span style="font-family:monospace; color:#60A5FA;">apt install</span> command in Step 2 - it works on every apt-based distro without exception.</p>
       </div>
     </div>
 
@@ -385,7 +385,7 @@
         <div class="step-num">1</div>
         <div class="step-body">
           <h3>Download the .deb file</h3>
-          <p>Click the download button above to save the <span class="inline-code">.deb</span> file to your Downloads folder. The package is fully self-contained — no Python installation required.</p>
+          <p>Click the download button above to save the <span class="inline-code">.deb</span> file to your Downloads folder. The package is fully self-contained - no Python installation required.</p>
         </div>
       </div>
 
@@ -398,7 +398,7 @@
           <div class="code-block"><pre><span class="cmd">sudo apt install</span> ~/Downloads/ranzer_1.0_amd64.deb</pre></div>
           <p>Replace <span class="inline-code">amd64</span> with <span class="inline-code">arm64</span> if you downloaded the ARM version. Enter your password when prompted.</p>
           <div class="note">
-            <strong>Why not just double-click?</strong> On some distros (Kali, minimal Ubuntu) double-clicking a .deb opens the Archive Manager instead of an installer — it just shows the internal files. The terminal command above works reliably on every apt-based distro.
+            <strong>Why not just double-click?</strong> On some distros (Kali, minimal Ubuntu) double-clicking a .deb opens the Archive Manager instead of an installer - it just shows the internal files. The terminal command above works reliably on every apt-based distro.
           </div>
         </div>
       </div>
@@ -420,7 +420,7 @@
       <div class="guide-step">
         <div class="step-num">4</div>
         <div class="step-body">
-          <h3>Optional — enable double-click installs</h3>
+          <h3>Optional - enable double-click installs</h3>
           <p>If you want future .deb downloads to open a proper install GUI when double-clicked, install GDebi:</p>
           <div class="code-block"><pre><span class="cmd">sudo apt install</span> gdebi</pre></div>
           <p>After that, double-clicking any .deb file will open a one-click install window.</p>
@@ -456,10 +456,10 @@
     <!-- Troubleshoot -->
     <div class="info-box">
       <h3>Troubleshooting</h3>
-      <p><strong>Dependency errors during install</strong> — Run <span class="inline-code">sudo apt-get install -f</span> after the failed install to auto-resolve missing dependencies.</p>
-      <p><strong>'ranzer' not found after install</strong> — Run <span class="inline-code">hash -r</span> or open a new terminal to refresh your shell's command cache.</p>
-      <p><strong>GUI doesn't open</strong> — Ensure you have a desktop environment running. On headless servers, RANZER's GUI requires a display. Use CLI mode instead: <span class="inline-code">ranzer monitor --dir ~/Documents</span>.</p>
-      <p><strong>Double-click opens Archive Manager</strong> — This is normal on some distros. Use <span class="inline-code">sudo apt install ./ranzer.deb</span> in the terminal, or install GDebi (Step 4 above).</p>
+      <p><strong>Dependency errors during install</strong> - Run <span class="inline-code">sudo apt-get install -f</span> after the failed install to auto-resolve missing dependencies.</p>
+      <p><strong>'ranzer' not found after install</strong> - Run <span class="inline-code">hash -r</span> or open a new terminal to refresh your shell's command cache.</p>
+      <p><strong>GUI doesn't open</strong> - Ensure you have a desktop environment running. On headless servers, RANZER's GUI requires a display. Use CLI mode instead: <span class="inline-code">ranzer monitor --dir ~/Documents</span>.</p>
+      <p><strong>Double-click opens Archive Manager</strong> - This is normal on some distros. Use <span class="inline-code">sudo apt install ./ranzer.deb</span> in the terminal, or install GDebi (Step 4 above).</p>
     </div>
 
   </div>

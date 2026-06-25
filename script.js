@@ -1,5 +1,5 @@
 /* ============================================================
-   RANZER Website — Interactions
+   RANZER Website - Interactions
    ============================================================ */
 
 // ── Hamburger / mobile drawer ──────────────────────────────
@@ -31,7 +31,7 @@ document.addEventListener('keydown', e => {
 });
 
 
-// ── Nav scroll — switch between dark-hero and light-page styles ───
+// ── Nav scroll - switch between dark-hero and light-page styles ───
 const nav = document.getElementById('nav');
 const heroHeight = document.querySelector('.hero')?.offsetHeight || 400;
 window.addEventListener('scroll', () => {

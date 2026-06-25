@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Guide — RANZER</title>
+  <title>User Guide - RANZER</title>
   <meta name="description" content="Complete user guide for RANZER. Learn how to set up monitoring, understand alerts, use the CLI, and test your protection." />
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -369,7 +369,7 @@
       <a href="index.html">RANZER</a> &rsaquo; User Guide
     </p>
     <h1 class="guide-hero-title">User Guide</h1>
-    <p class="guide-hero-sub">Everything you need to know — from first launch to advanced CLI usage.</p>
+    <p class="guide-hero-sub">Everything you need to know - from first launch to advanced CLI usage.</p>
     <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
       <a href="#first-launch" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.25); color:#fff; height:42px; font-size:14px;">GUI Walkthrough</a>
       <a href="#cli" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.25); color:#fff; height:42px; font-size:14px;">CLI Reference</a>
@@ -430,8 +430,8 @@
             <h3>The landing screen</h3>
             <p>The first screen you see is a brief introduction explaining what RANZER does and how it works. This screen has two buttons:</p>
             <p>
-              · <strong>Get Started</strong> — moves you to the Setup screen to configure monitoring<br>
-              · <strong>Learn More</strong> — opens the GitHub repository in your browser
+              · <strong>Get Started</strong> - moves you to the Setup screen to configure monitoring<br>
+              · <strong>Learn More</strong> - opens the GitHub repository in your browser
             </p>
             <p>Click <strong>Get Started</strong> when you're ready.</p>
           </div>
@@ -440,7 +440,7 @@
           <div class="step-num">3</div>
           <div class="step-body">
             <h3>The Setup screen</h3>
-            <p>This is where you tell RANZER which folders to protect and how aggressively to respond. You only need to do this once — RANZER remembers your settings the next time you open it.</p>
+            <p>This is where you tell RANZER which folders to protect and how aggressively to respond. You only need to do this once - RANZER remembers your settings the next time you open it.</p>
             <p>See the <a href="#monitoring" style="color:var(--primary);">Setting Up Monitoring</a> section below for a full walkthrough of every option on this screen.</p>
           </div>
         </div>
@@ -462,13 +462,13 @@
             <h3>Add your directories</h3>
             <p>In the Setup screen, click <strong>Add Directory</strong> and choose a folder from the file browser. Repeat this for every folder you want to protect. Recommended folders to add:</p>
             <p>
-              · <strong>Desktop</strong> — files dragged here are a primary ransomware target<br>
-              · <strong>Documents</strong> — office files, PDFs, spreadsheets<br>
-              · <strong>Downloads</strong> — any file downloaded from the internet<br>
-              · <strong>Pictures / Videos</strong> — irreplaceable personal files<br>
-              · <strong>External drives</strong> — USB drives and mapped network shares
+              · <strong>Desktop</strong> - files dragged here are a primary ransomware target<br>
+              · <strong>Documents</strong> - office files, PDFs, spreadsheets<br>
+              · <strong>Downloads</strong> - any file downloaded from the internet<br>
+              · <strong>Pictures / Videos</strong> - irreplaceable personal files<br>
+              · <strong>External drives</strong> - USB drives and mapped network shares
             </p>
-            <div class="note">Focus on folders that contain your actual data. Avoid monitoring the drive root (<span class="inline-code">C:\</span> or <span class="inline-code">/</span>) — system processes modify thousands of files per minute there and will flood you with noise.</div>
+            <div class="note">Focus on folders that contain your actual data. Avoid monitoring the drive root (<span class="inline-code">C:\</span> or <span class="inline-code">/</span>) - system processes modify thousands of files per minute there and will flood you with noise.</div>
           </div>
         </div>
         <div class="guide-step">
@@ -476,9 +476,9 @@
           <div class="step-num">2</div>
           <div class="step-body">
             <h3>Enable Honey Files</h3>
-            <p>When Honey Files is enabled, RANZER automatically creates a set of hidden decoy files inside each monitored directory. These files have no legitimate reason to be touched by any software. If any process reads or writes to them, RANZER raises an immediate alert — even before entropy or write-rate signals escalate.</p>
+            <p>When Honey Files is enabled, RANZER automatically creates a set of hidden decoy files inside each monitored directory. These files have no legitimate reason to be touched by any software. If any process reads or writes to them, RANZER raises an immediate alert - even before entropy or write-rate signals escalate.</p>
             <p>This makes honey files the fastest and most reliable detection trigger. <strong>Keep this enabled.</strong></p>
-            <div class="note">Don't touch, rename, or delete any file starting with <span class="inline-code">.</span> in your monitored folders after RANZER starts — those are likely honey files, and removing them disables this detection method for that directory.</div>
+            <div class="note">Don't touch, rename, or delete any file starting with <span class="inline-code">.</span> in your monitored folders after RANZER starts - those are likely honey files, and removing them disables this detection method for that directory.</div>
           </div>
         </div>
         <div class="guide-step">
@@ -486,7 +486,7 @@
           <div class="step-num">3</div>
           <div class="step-body">
             <h3>Configure Auto-Terminate (optional)</h3>
-            <p>When enabled, RANZER kills the suspected ransomware process the moment a CRITICAL alert fires — no click required. This stops encryption mid-attack and limits the number of files damaged.</p>
+            <p>When enabled, RANZER kills the suspected ransomware process the moment a CRITICAL alert fires - no click required. This stops encryption mid-attack and limits the number of files damaged.</p>
             <p>This is optional during your first setup. See the <a href="#auto-terminate" style="color:var(--primary);">Auto-Terminate section</a> for guidance on when it's safe to turn on.</p>
           </div>
         </div>
@@ -502,7 +502,7 @@
               · Enables entropy analysis on all file writes
             </p>
             <p>The app switches to the Dashboard view. RANZER is now actively protecting your files.</p>
-            <div class="success">Once monitoring starts you can minimize RANZER to the system tray. It continues running in the background — you don't need to keep the window open.</div>
+            <div class="success">Once monitoring starts you can minimize RANZER to the system tray. It continues running in the background - you don't need to keep the window open.</div>
           </div>
         </div>
       </div>
@@ -518,7 +518,7 @@
       <div class="tip-grid">
         <div class="tip-card">
           <strong>Events / sec</strong>
-          The number of file system events being processed right now — writes, renames, creations, deletions. A normal machine idle sits at 0–5. A sudden spike to 50+ is the first sign of ransomware bulk-encryption behaviour.
+          The number of file system events being processed right now - writes, renames, creations, deletions. A normal machine idle sits at 0–5. A sudden spike to 50+ is the first sign of ransomware bulk-encryption behaviour.
         </div>
         <div class="tip-card">
           <strong>Threat Score</strong>
@@ -534,7 +534,7 @@
         </div>
         <div class="tip-card">
           <strong>Entropy Reading</strong>
-          Average randomness of recent file writes on a 0–8 scale. Normal files (text, code, documents) score 4–6. Encrypted output — the hallmark of ransomware — scores 7.8–8.0. Sustained high entropy from a single process is a major warning sign.
+          Average randomness of recent file writes on a 0–8 scale. Normal files (text, code, documents) score 4–6. Encrypted output - the hallmark of ransomware - scores 7.8–8.0. Sustained high entropy from a single process is a major warning sign.
         </div>
         <div class="tip-card">
           <strong>Alerts Log</strong>
@@ -543,7 +543,7 @@
       </div>
 
       <div class="note" style="margin-top: 24px;">
-        <strong>What does a normal dashboard look like?</strong> Events/sec is low (under 5), Threat Score stays under 40, entropy reads are moderate (around 5–6), and the Alerts log shows only occasional INFO entries from apps you're actively using — like a text editor auto-saving.
+        <strong>What does a normal dashboard look like?</strong> Events/sec is low (under 5), Threat Score stays under 40, entropy reads are moderate (around 5–6), and the Alerts log shows only occasional INFO entries from apps you're actively using - like a text editor auto-saving.
       </div>
     </div>
 
@@ -552,14 +552,14 @@
     <div class="guide-block" id="how-it-detects">
       <p class="block-label">Under the Hood</p>
       <h2 class="block-title">How RANZER Detects Ransomware</h2>
-      <p class="block-intro">RANZER combines four independent detection methods and fuses their signals into a single threat score. No single method is relied on alone — this makes detection more accurate and harder to evade.</p>
+      <p class="block-intro">RANZER combines four independent detection methods and fuses their signals into a single threat score. No single method is relied on alone - this makes detection more accurate and harder to evade.</p>
 
       <div class="detect-grid">
         <div class="detect-card">
           <div class="detect-icon">&#128916;</div>
           <div>
             <h4>Honey File Monitoring</h4>
-            <p>RANZER places hidden decoy files with realistic-looking names inside every monitored directory. No legitimate application has any reason to open these files. If any process touches a honey file, RANZER raises an immediate alert — this is the fastest and most reliable trigger. Real ransomware touches everything in a directory, so it hits these files within seconds of starting.</p>
+            <p>RANZER places hidden decoy files with realistic-looking names inside every monitored directory. No legitimate application has any reason to open these files. If any process touches a honey file, RANZER raises an immediate alert - this is the fastest and most reliable trigger. Real ransomware touches everything in a directory, so it hits these files within seconds of starting.</p>
           </div>
         </div>
         <div class="detect-card">
@@ -573,19 +573,19 @@
           <div class="detect-icon">&#9878;</div>
           <div>
             <h4>Shannon Entropy Analysis</h4>
-            <p>Every file written to a monitored directory is sampled and its Shannon entropy is calculated — a measure of how random the data is. Normal files (text documents, spreadsheets, source code) have entropy between 4 and 6. Encrypted output — which is the core product of all ransomware — has near-maximum entropy of 7.8–8.0. Sustained high-entropy writes from a single process are a strong indicator of active encryption.</p>
+            <p>Every file written to a monitored directory is sampled and its Shannon entropy is calculated - a measure of how random the data is. Normal files (text documents, spreadsheets, source code) have entropy between 4 and 6. Encrypted output - which is the core product of all ransomware - has near-maximum entropy of 7.8–8.0. Sustained high-entropy writes from a single process are a strong indicator of active encryption.</p>
           </div>
         </div>
         <div class="detect-card">
           <div class="detect-icon">&#128195;</div>
           <div>
             <h4>File Extension Anomaly Detection</h4>
-            <p>Ransomware commonly renames files after encrypting them — replacing the original extension with a custom one like <span class="inline-code">.enc</span>, <span class="inline-code">.locked</span>, or a random string. RANZER watches for mass rename events where many files lose their original extensions simultaneously, which is a behavioural pattern unique to ransomware.</p>
+            <p>Ransomware commonly renames files after encrypting them - replacing the original extension with a custom one like <span class="inline-code">.enc</span>, <span class="inline-code">.locked</span>, or a random string. RANZER watches for mass rename events where many files lose their original extensions simultaneously, which is a behavioural pattern unique to ransomware.</p>
           </div>
         </div>
       </div>
 
-      <p style="margin-top:28px; font-size:15px; line-height:24px; color:var(--text-sec);">These four signals are combined into a single <strong>Threat Score</strong> updated every 500ms. A CRITICAL alert requires multiple signals to confirm simultaneously — this prevents single-method false positives while ensuring genuine attacks are caught quickly.</p>
+      <p style="margin-top:28px; font-size:15px; line-height:24px; color:var(--text-sec);">These four signals are combined into a single <strong>Threat Score</strong> updated every 500ms. A CRITICAL alert requires multiple signals to confirm simultaneously - this prevents single-method false positives while ensuring genuine attacks are caught quickly.</p>
     </div>
 
 
@@ -599,8 +599,8 @@
         <div class="alert-card info">
           <div class="alert-dot" style="background:#3B82F6;"></div>
           <div>
-            <h4>INFO — Normal file activity</h4>
-            <p>A file event was observed — a write, rename, creation, or deletion. This is routine background activity from apps you're running. RANZER logs it for visibility.</p>
+            <h4>INFO - Normal file activity</h4>
+            <p>A file event was observed - a write, rename, creation, or deletion. This is routine background activity from apps you're running. RANZER logs it for visibility.</p>
             <p><strong>Common sources:</strong> text editors auto-saving, browser downloads completing, cloud sync apps (Dropbox, OneDrive) syncing changes.</p>
             <span class="alert-action">No action needed</span>
           </div>
@@ -608,19 +608,19 @@
         <div class="alert-card warn">
           <div class="alert-dot" style="background:#F59E0B;"></div>
           <div>
-            <h4>WARNING — Elevated signals</h4>
-            <p>One detection method has flagged something abnormal — typically higher-than-expected entropy in a file write, or a write rate spike from a single process. This alone isn't conclusive — backup tools, file converters, and compression software can all cause this legitimately.</p>
-            <p><strong>What to do:</strong> Check the process name shown in the alert. If it's a known app (e.g. <span class="inline-code">7z.exe</span>, <span class="inline-code">dropbox</span>, <span class="inline-code">restic</span>), it's a false positive — no action needed. If it's an unfamiliar process name or <span class="inline-code">python.exe</span> with no obvious reason, keep watching. If WARNINGs continue escalating, a CRITICAL alert may follow.</p>
+            <h4>WARNING - Elevated signals</h4>
+            <p>One detection method has flagged something abnormal - typically higher-than-expected entropy in a file write, or a write rate spike from a single process. This alone isn't conclusive - backup tools, file converters, and compression software can all cause this legitimately.</p>
+            <p><strong>What to do:</strong> Check the process name shown in the alert. If it's a known app (e.g. <span class="inline-code">7z.exe</span>, <span class="inline-code">dropbox</span>, <span class="inline-code">restic</span>), it's a false positive - no action needed. If it's an unfamiliar process name or <span class="inline-code">python.exe</span> with no obvious reason, keep watching. If WARNINGs continue escalating, a CRITICAL alert may follow.</p>
             <span class="alert-action">Investigate the process name</span>
           </div>
         </div>
         <div class="alert-card crit">
           <div class="alert-dot" style="background:#EF4444;"></div>
           <div>
-            <h4>CRITICAL — Ransomware signature confirmed</h4>
-            <p>Multiple detection signals confirmed simultaneously — a honey file was accessed AND high-entropy writes are occurring AND a single process is producing a high write rate. This combination is a strong indicator of active ransomware encryption.</p>
+            <h4>CRITICAL - Ransomware signature confirmed</h4>
+            <p>Multiple detection signals confirmed simultaneously - a honey file was accessed AND high-entropy writes are occurring AND a single process is producing a high write rate. This combination is a strong indicator of active ransomware encryption.</p>
             <p>If Auto-Terminate is enabled, the process has already been killed. If not, you'll see a prominent pop-up alert with the option to terminate it immediately.</p>
-            <p><strong>What to do:</strong> If you didn't trigger this yourself (e.g. by running the built-in simulator), treat it as real. Disconnect from the internet immediately to prevent the ransomware from contacting its command-and-control server. Then check the PID shown in the alert — use Task Manager (Windows) or <span class="inline-code">kill -9 &lt;PID&gt;</span> (Linux) to terminate it if RANZER hasn't already. See the <a href="#after-detection" style="color:#EF4444;">After Detection</a> section for full recovery steps.</p>
+            <p><strong>What to do:</strong> If you didn't trigger this yourself (e.g. by running the built-in simulator), treat it as real. Disconnect from the internet immediately to prevent the ransomware from contacting its command-and-control server. Then check the PID shown in the alert - use Task Manager (Windows) or <span class="inline-code">kill -9 &lt;PID&gt;</span> (Linux) to terminate it if RANZER hasn't already. See the <a href="#after-detection" style="color:#EF4444;">After Detection</a> section for full recovery steps.</p>
             <span class="alert-action" style="background:#FEE2E2; color:#EF4444;">Act immediately</span>
           </div>
         </div>
@@ -632,7 +632,7 @@
     <div class="guide-block" id="auto-terminate">
       <p class="block-label">Protection</p>
       <h2 class="block-title">Auto-Terminate</h2>
-      <p class="block-intro">When enabled, RANZER kills the suspected ransomware process the instant a CRITICAL alert fires — stopping encryption before it spreads further. No user interaction required.</p>
+      <p class="block-intro">When enabled, RANZER kills the suspected ransomware process the instant a CRITICAL alert fires - stopping encryption before it spreads further. No user interaction required.</p>
 
       <div class="guide-steps">
         <div class="guide-step">
@@ -640,7 +640,7 @@
           <div class="step-num">!</div>
           <div class="step-body">
             <h3>Before you enable it</h3>
-            <p>Auto-Terminate is powerful but requires care. In rare cases, a legitimate process performing large-scale writes — a backup tool, a database compaction job, a video encoder — could accumulate enough detection signals to cross the CRITICAL threshold.</p>
+            <p>Auto-Terminate is powerful but requires care. In rare cases, a legitimate process performing large-scale writes - a backup tool, a database compaction job, a video encoder - could accumulate enough detection signals to cross the CRITICAL threshold.</p>
             <div class="warn">Run RANZER in monitoring-only mode for at least a day before enabling Auto-Terminate. Review the Alerts tab to check whether any of your regularly-used apps are generating WARNINGs. If nothing legitimate is being flagged, you're ready to enable it.</div>
           </div>
         </div>
@@ -662,7 +662,7 @@
           <div class="step-num">i</div>
           <div class="step-body">
             <h3>How termination works</h3>
-            <p>When RANZER terminates a process it sends a <span class="inline-code">SIGKILL</span> (Linux) or calls <span class="inline-code">TerminateProcess()</span> (Windows) — a hard kill that gives the process no chance to save state or communicate back to an attacker's server.</p>
+            <p>When RANZER terminates a process it sends a <span class="inline-code">SIGKILL</span> (Linux) or calls <span class="inline-code">TerminateProcess()</span> (Windows) - a hard kill that gives the process no chance to save state or communicate back to an attacker's server.</p>
             <p>On Windows, RANZER needs to be running as administrator to terminate processes started by other users. On Linux, it can only terminate processes owned by the same user unless run with <span class="inline-code">sudo</span>.</p>
           </div>
         </div>
@@ -674,12 +674,12 @@
     <div class="guide-block" id="after-detection">
       <p class="block-label">Recovery</p>
       <h2 class="block-title">What to Do After Detection</h2>
-      <p class="block-intro">If RANZER fires a CRITICAL alert for something that isn't the built-in simulator, follow these steps immediately. Speed matters — the less time the ransomware runs, the fewer files it damages.</p>
+      <p class="block-intro">If RANZER fires a CRITICAL alert for something that isn't the built-in simulator, follow these steps immediately. Speed matters - the less time the ransomware runs, the fewer files it damages.</p>
 
       <div class="recovery-steps">
         <div class="recovery-step">
           <div class="recovery-num">1</div>
-          <p><strong>Disconnect from the internet.</strong> Pull out the ethernet cable or disable Wi-Fi. Most modern ransomware contacts a remote server to receive an encryption key — cutting the connection may prevent it from completing the key exchange and makes some strains unable to encrypt further.</p>
+          <p><strong>Disconnect from the internet.</strong> Pull out the ethernet cable or disable Wi-Fi. Most modern ransomware contacts a remote server to receive an encryption key - cutting the connection may prevent it from completing the key exchange and makes some strains unable to encrypt further.</p>
         </div>
         <div class="recovery-step">
           <div class="recovery-num">2</div>
@@ -691,7 +691,7 @@
         </div>
         <div class="recovery-step">
           <div class="recovery-num">4</div>
-          <p><strong>Do not pay the ransom.</strong> There is no guarantee that paying will result in decryption. Instead, check the ransomware strain against <a href="https://www.nomoreransom.org" target="_blank" rel="noopener" style="color:var(--primary);">nomoreransom.org</a> — a free resource from law enforcement agencies that provides decryption tools for known strains.</p>
+          <p><strong>Do not pay the ransom.</strong> There is no guarantee that paying will result in decryption. Instead, check the ransomware strain against <a href="https://www.nomoreransom.org" target="_blank" rel="noopener" style="color:var(--primary);">nomoreransom.org</a> - a free resource from law enforcement agencies that provides decryption tools for known strains.</p>
         </div>
         <div class="recovery-step">
           <div class="recovery-num">5</div>
@@ -699,7 +699,7 @@
         </div>
         <div class="recovery-step">
           <div class="recovery-num">6</div>
-          <p><strong>Run a full antivirus scan.</strong> Before reconnecting to the internet, run a full system scan with your antivirus to find and remove the ransomware dropper. RANZER detects and stops the encryption — cleaning the root infection is the antivirus's job.</p>
+          <p><strong>Run a full antivirus scan.</strong> Before reconnecting to the internet, run a full system scan with your antivirus to find and remove the ransomware dropper. RANZER detects and stops the encryption - cleaning the root infection is the antivirus's job.</p>
         </div>
       </div>
     </div>
@@ -709,7 +709,7 @@
     <div class="guide-block" id="false-positives">
       <p class="block-label">Tuning</p>
       <h2 class="block-title">False Positives &amp; Tuning</h2>
-      <p class="block-intro">Some legitimate applications exhibit behaviour that resembles ransomware — bulk file writes, high-entropy output, or mass renames. Here's how to identify and handle false positives.</p>
+      <p class="block-intro">Some legitimate applications exhibit behaviour that resembles ransomware - bulk file writes, high-entropy output, or mass renames. Here's how to identify and handle false positives.</p>
 
       <p style="font-size:15px; line-height:24px; color:var(--text-sec); margin-bottom:20px;"><strong>Common sources of false-positive WARNINGs:</strong></p>
 
@@ -741,7 +741,7 @@
       </div>
 
       <div class="note" style="margin-top: 24px;">
-        <strong>How to reduce false positives:</strong> If a specific legitimate app is generating WARNINGs regularly, move its working directory outside your monitored folders, or exclude the specific subfolder from monitoring. The goal is to monitor where your irreplaceable personal files live — not every folder on your system.
+        <strong>How to reduce false positives:</strong> If a specific legitimate app is generating WARNINGs regularly, move its working directory outside your monitored folders, or exclude the specific subfolder from monitoring. The goal is to monitor where your irreplaceable personal files live - not every folder on your system.
       </div>
     </div>
 
@@ -757,7 +757,7 @@
           <div class="step-line"></div>
           <div class="step-num">W</div>
           <div class="step-body">
-            <h3>Windows — Task Scheduler</h3>
+            <h3>Windows - Task Scheduler</h3>
             <p>Open <strong>Task Scheduler</strong> from the Start Menu and click <strong>Create Basic Task</strong>. Set the trigger to <em>When I log on</em>. For the action, set the program to:</p>
             <div class="code-block"><pre>C:\Program Files\Ranzer\ranzer.exe gui</pre></div>
             <p>Tick <strong>Run with highest privileges</strong> so RANZER has full process-termination access. Click Finish.</p>
@@ -767,7 +767,7 @@
         <div class="guide-step">
           <div class="step-num">L</div>
           <div class="step-body">
-            <h3>Linux — systemd user service</h3>
+            <h3>Linux - systemd user service</h3>
             <p>Create a user service file so RANZER starts on login:</p>
             <div class="code-block"><pre><span class="comment"># Create the service file</span>
 <span class="cmd">mkdir</span> -p ~/.config/systemd/user
@@ -796,7 +796,7 @@ WantedBy=default.target</pre></div>
     <div class="guide-block" id="cli">
       <p class="block-label">Advanced</p>
       <h2 class="block-title">CLI Reference</h2>
-      <p class="block-intro">Every feature available in the GUI is also accessible from the command line — useful for servers, scripts, automated pipelines, and power users who prefer the terminal.</p>
+      <p class="block-intro">Every feature available in the GUI is also accessible from the command line - useful for servers, scripts, automated pipelines, and power users who prefer the terminal.</p>
 
       <table class="cli-table">
         <thead>
@@ -820,7 +820,7 @@ WantedBy=default.target</pre></div>
           </tr>
           <tr>
             <td>ranzer monitor --dir &lt;path&gt; --honey</td>
-            <td>Deploy honey files into the target directory before starting the monitor. Honey files persist between sessions — you only need this flag the first time you monitor a new directory.</td>
+            <td>Deploy honey files into the target directory before starting the monitor. Honey files persist between sessions - you only need this flag the first time you monitor a new directory.</td>
           </tr>
           <tr>
             <td>ranzer monitor --dir &lt;path&gt; --delay &lt;secs&gt;</td>
@@ -836,7 +836,7 @@ WantedBy=default.target</pre></div>
           </tr>
           <tr>
             <td>ranzer simulate --dir &lt;path&gt; --new-only</td>
-            <td>Only run Phase 4 (new file creation with high-entropy data). Skips the in-place overwrite and rename phases — useful for testing entropy detection in isolation.</td>
+            <td>Only run Phase 4 (new file creation with high-entropy data). Skips the in-place overwrite and rename phases - useful for testing entropy detection in isolation.</td>
           </tr>
           <tr>
             <td>ranzer simulate --dir &lt;path&gt; --files &lt;n&gt;</td>
@@ -854,21 +854,21 @@ WantedBy=default.target</pre></div>
       </table>
 
       <div class="code-block" style="margin-top:28px;">
-<pre><span class="comment"># Recommended setup — GUI with full protection</span>
+<pre><span class="comment"># Recommended setup - GUI with full protection</span>
 <span class="cmd">ranzer gui</span>
 
-<span class="comment"># CLI — monitor Documents with auto-terminate and honey files</span>
+<span class="comment"># CLI - monitor Documents with auto-terminate and honey files</span>
 <span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/Documents <span class="flag">--auto-terminate</span> <span class="flag">--honey</span>
 
-<span class="comment"># CLI — monitor multiple directories simultaneously (background jobs)</span>
+<span class="comment"># CLI - monitor multiple directories simultaneously (background jobs)</span>
 <span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/Documents <span class="flag">--honey</span> &amp;
 <span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/Desktop <span class="flag">--honey</span> &amp;
 <span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/Downloads <span class="flag">--honey</span> &amp;
 
-<span class="comment"># CLI — more sensitive detection (lower threshold)</span>
+<span class="comment"># CLI - more sensitive detection (lower threshold)</span>
 <span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/Documents <span class="flag">--threshold</span> 70 <span class="flag">--honey</span>
 
-<span class="comment"># CLI — lower CPU usage (sample every 2 seconds)</span>
+<span class="comment"># CLI - lower CPU usage (sample every 2 seconds)</span>
 <span class="cmd">ranzer monitor</span> <span class="flag">--dir</span> ~/Documents <span class="flag">--delay</span> 2.0 <span class="flag">--honey</span></pre>
       </div>
     </div>
@@ -878,7 +878,7 @@ WantedBy=default.target</pre></div>
     <div class="guide-block" id="test">
       <p class="block-label">Verification</p>
       <h2 class="block-title">Testing Detection</h2>
-      <p class="block-intro">RANZER includes a built-in simulator that mimics real ransomware behaviour across four phases. Always test after setting up RANZER to confirm detection is live before you rely on it. Do this in a throwaway directory — not your real files.</p>
+      <p class="block-intro">RANZER includes a built-in simulator that mimics real ransomware behaviour across four phases. Always test after setting up RANZER to confirm detection is live before you rely on it. Do this in a throwaway directory - not your real files.</p>
 
       <div class="warn" style="margin-bottom:28px;">
         <strong>The simulator overwrites files with random bytes.</strong> Only point it at a temporary test folder you create specifically for this purpose. Never use your actual Documents, Desktop, or Downloads folder for this test.
@@ -922,10 +922,10 @@ WantedBy=default.target</pre></div>
             <div class="code-block"><pre><span class="cmd">ranzer simulate</span> <span class="flag">--dir</span> ~/ranzer_test</pre></div>
             <p>The simulator runs four phases that mimic a real ransomware attack:</p>
             <p>
-              · <strong>Phase 1 — In-place encryption:</strong> Overwrites each file's contents with cryptographically-random bytes. This triggers entropy detection and the honey file engine simultaneously.<br>
-              · <strong>Phase 2 — Rename to encrypted extension:</strong> Renames all files to <span class="inline-code">filename.enc</span>. This triggers file extension anomaly detection.<br>
-              · <strong>Phase 3 — Ransom note drop:</strong> Creates a <span class="inline-code">README_DECRYPT.txt</span> file. This simulates the note left by real ransomware and triggers a honey file access if the decoy file was near it.<br>
-              · <strong>Phase 4 — New file flood:</strong> Creates 50 new high-entropy <span class="inline-code">.enc</span> files to simulate ongoing encryption of files that don't exist yet.
+              · <strong>Phase 1 - In-place encryption:</strong> Overwrites each file's contents with cryptographically-random bytes. This triggers entropy detection and the honey file engine simultaneously.<br>
+              · <strong>Phase 2 - Rename to encrypted extension:</strong> Renames all files to <span class="inline-code">filename.enc</span>. This triggers file extension anomaly detection.<br>
+              · <strong>Phase 3 - Ransom note drop:</strong> Creates a <span class="inline-code">README_DECRYPT.txt</span> file. This simulates the note left by real ransomware and triggers a honey file access if the decoy file was near it.<br>
+              · <strong>Phase 4 - New file flood:</strong> Creates 50 new high-entropy <span class="inline-code">.enc</span> files to simulate ongoing encryption of files that don't exist yet.
             </p>
           </div>
         </div>
@@ -935,7 +935,7 @@ WantedBy=default.target</pre></div>
           <div class="step-num">4</div>
           <div class="step-body">
             <h3>Expected result</h3>
-            <p>RANZER should detect the simulator during Phase 1 or 2 — before Phase 4 even starts. In your first terminal you'll see output like:</p>
+            <p>RANZER should detect the simulator during Phase 1 or 2 - before Phase 4 even starts. In your first terminal you'll see output like:</p>
             <div class="code-block"><pre><span class="comment">[CRITICAL] Threat score: 94/100 | PID: 12453 | ranzer_simulate</span>
 <span class="comment">[ACTION]   Auto-terminate: killed process 12453</span>
 <span class="comment">[HONEY]    Honey file accessed: .ranzer_honey_a3f9.bin</span></pre></div>
@@ -948,7 +948,7 @@ WantedBy=default.target</pre></div>
           <div class="step-num">5</div>
           <div class="step-body">
             <h3>Clean up the test directory</h3>
-            <p>After the test, delete the test folder — the files inside have been overwritten with random data and are no longer the original dummy files:</p>
+            <p>After the test, delete the test folder - the files inside have been overwritten with random data and are no longer the original dummy files:</p>
             <div class="code-block"><pre><span class="comment"># Linux</span>
 <span class="cmd">rm</span> -rf ~/ranzer_test</pre></div>
             <div class="code-block" style="margin-top:8px;"><pre><span class="comment"># Windows</span>
@@ -976,7 +976,7 @@ WantedBy=default.target</pre></div>
         </div>
         <div class="tip-card">
           <strong>Test after every setup change</strong>
-          Any time you add a new directory or change settings, run the simulator against a test folder to confirm detection is still working. Don't assume — verify.
+          Any time you add a new directory or change settings, run the simulator against a test folder to confirm detection is still working. Don't assume - verify.
         </div>
         <div class="tip-card">
           <strong>Don't touch honey files</strong>
@@ -992,7 +992,7 @@ WantedBy=default.target</pre></div>
         </div>
         <div class="tip-card">
           <strong>Keep backups regardless</strong>
-          RANZER dramatically limits damage, but it's not a substitute for backups. RANZER stops encryption in seconds — but even seconds can mean dozens of files. A recent backup is your safety net for those files.
+          RANZER dramatically limits damage, but it's not a substitute for backups. RANZER stops encryption in seconds - but even seconds can mean dozens of files. A recent backup is your safety net for those files.
         </div>
         <div class="tip-card">
           <strong>Use the GUI for daily use, CLI for servers</strong>

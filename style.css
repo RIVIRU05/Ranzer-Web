@@ -1,5 +1,5 @@
 /* ============================================================
-   RANZER — Apple-Inspired Design System
+   RANZER - Apple-Inspired Design System
    ============================================================ */
 
 :root {
@@ -250,7 +250,7 @@ img { display: block; max-width: 100%; }
 }
 .hero .container { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
 
-/* Hero logo — size by width since it's a landscape image */
+/* Hero logo - size by width since it's a landscape image */
 .hero-logo {
   width: 180px;
   height: auto;
@@ -600,7 +600,7 @@ img { display: block; max-width: 100%; }
   height: 40px;
   width: auto;
   object-fit: contain;
-  /* VU logo is black on white — invert it to white for dark background */
+  /* VU logo is black on white - invert it to white for dark background */
   filter: invert(1) brightness(0.85);
   opacity: 0.75;
   transition: opacity 0.2s;
